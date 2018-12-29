@@ -4,6 +4,7 @@
     "start": "umi dev",
     "build": "umi build",
     "test": "umi test",
+    "server": "node ./server/index.js",
     "lint": "eslint --ext .js src mock tests",
     "precommit": "lint-staged"
   },
@@ -21,9 +22,16 @@
     "umi-plugin-react": "^1.1.1"
   },
   "lint-staged": {
-    "*.{js,jsx}": ["eslint --fix", "git add"]
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "engines": {
     "node": ">=8.0.0"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.1"
   }
 }
