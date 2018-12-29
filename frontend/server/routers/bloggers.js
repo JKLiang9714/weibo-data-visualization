@@ -5,12 +5,12 @@ const { rmEmptyProp } = require('../lib/utils')
 const router = express.Router()
 
 
-router.get('/:id?', (req, res) => {
+router.get('/:name?', (req, res) => {
     var findObj = rmEmptyProp(
         Object.assign(
             {},
             req.query,
-            { _id: req.params.id, },
+            { name: req.params.name, },
         )
     )
     console.info("Get bloggers", findObj)
