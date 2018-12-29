@@ -32,6 +32,8 @@
     "node": ">=8.0.0"
   },
   "dependencies": {
+    "echarts": "^4.2.0-rc.2",
+    "echarts-for-react": "^2.0.15-beta.0",
     "express": "^4.16.4",
     "mongoose": "^5.4.1"
   }
