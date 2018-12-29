@@ -1,8 +1,23 @@
-var { connect } = require("mongoose");
+var mongoose = require("mongoose");
 
-const IP = "localhost"
+const IP = "10.82.82.15"
 const PORT = "27017"
-const COLLECTIONS = "myblog"
+const DATABASE = "Weibo"
 
-var db = connect(`mongodb://${IP}:${PORT}/${COLLECTIONS}`);
-module.exports = db
+const USER = "root"
+const PASSWORD = "root"
+
+mongoose.connect(
+    `mongodb://${USER}:${PASSWORD}@${IP}:${PORT}/${DATABASE}`
+);
+
+const db = mongoose.connection
+
+db.on('error', (error) => {
+    console.error('mongodb connect error', error)
+})
+db.once('open', () => {
+    console.info("mongodb connect success")
+})
+
+module.exports = mongoose.connection

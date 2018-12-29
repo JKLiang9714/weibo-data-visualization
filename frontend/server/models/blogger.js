@@ -2,7 +2,6 @@ var { Schema } = require("mongoose");
 var db = require('../lib/mongo');
 
 var bloggerSchema = new Schema({
-    _id: Schema.Types.ObjectId,
     name: String,
     id: String,
     sex: String,
@@ -10,6 +9,6 @@ var bloggerSchema = new Schema({
     weibo_num: Number,
     following: Number,
     followers: Number,
-})
+}, { collection: 'blogger_info' })
 
-module.exports = db.model('blogger', bloggerSchema)
+module.exports = db.model('Blogger', bloggerSchema)

@@ -1,5 +1,9 @@
-var express = require('express');
+var express = require('express')
 const app = express()
 
-module.exports = app
+app.use('/bloggers', require('./routers/bloggers'))
+
+app.listen(8001, () => {
+    console.log("server listen at 8001")
+})
 
