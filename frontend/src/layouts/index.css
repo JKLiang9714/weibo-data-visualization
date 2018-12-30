@@ -4,11 +4,14 @@
   cursor: pointer;
   text-align: center;
   padding: 20px;
+  height: 70px;
   transition: 0.5s all;
 }
 
 .logoHide{
   opacity: 0;
+  visibility: hidden;
+  height: 70px;
   padding: 20px;
 
 }
