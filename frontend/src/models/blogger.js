@@ -6,7 +6,9 @@ export default {
 
     state: {
         list: [],
-        single: {}
+        single: {},
+        friends: [],
+        weiboContent: []
     },
 
     reducers: {
@@ -26,13 +28,16 @@ export default {
             });
         },
         *getSingle({ payload }, { call, put }) {
-            const single = yield call(service.getBlogger, {
-                name: payload.name
-            })
+            const single = yield call(service.getBlogger, { name: payload.name })
+            const friends = yield call(service.getBloggerFriends, { name: payload.name })
+            const weiboContent = yield call(service.getBloggerWeiboContent, { name: payload.name })
+
             yield put({
                 type: 'save',
                 payload: {
-                    single
+                    single,
+                    friends,
+                    weiboContent,
                 }
             });
         },
