@@ -31,3 +31,5 @@ npm start
 
 - GET /api/bloggers 获取所有博主
 - GET /api/bloggers/:name 获取单个博主（按姓名）的基本信息
+- GET /api/blogger/:name/friends 获取博主朋友列表
+- GET /api/blogger/:name/weiboContent 获取博主微博列表
