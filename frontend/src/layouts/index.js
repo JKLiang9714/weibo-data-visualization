@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Layout, Icon, Menu } from "antd";
 import Link from "umi/link";
 import styles from './index.css';
-import routerConfig from '../routerConfig'
+import routerConfig from '../menuConfig'
 
 const {
   Header, Content, Footer, Sider,

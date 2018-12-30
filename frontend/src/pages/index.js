@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 const columns = [{
   title: '姓名',
   dataIndex: 'name',
-  render: text => <Link to="/">
+  render: text => <Link to={`/bloggers/${text}`}>
     {text}
   </Link>
 }, {
@@ -20,6 +20,10 @@ const columns = [{
 }, {
   title: '出生地',
   dataIndex: 'birthplace',
+}, {
+  title: '微博数',
+  dataIndex: 'weibo_num',
+  sorter: (a, b) => a.weibo_num - b.weibo_num,
 }, {
   title: '关注',
   dataIndex: 'following',
@@ -32,7 +36,7 @@ const columns = [{
 
 function Index(props) {
   return (
-    <div className={styles.normal}>
+    <div>
       <Table
         columns={columns}
         dataSource={props.bloggers}
