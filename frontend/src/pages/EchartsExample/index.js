@@ -21,7 +21,7 @@ const getOption = (data) => {
 export default function () {
     return <ReactEcharts
         style={{
-            height: 700
+            height: 500
         }}
         option={getOption()}
     />
