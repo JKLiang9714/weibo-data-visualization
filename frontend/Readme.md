@@ -7,6 +7,8 @@ npm start
 ## 说明
 - localhost:8000/api ---proxy---> localhost:8001
 
+## 添加一个页面
+在pages下赋值EchartsExample，重命名，然后添加到routerConfig
 
 ## API文档
 
