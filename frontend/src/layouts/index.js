@@ -72,7 +72,7 @@ class BasicLayout extends Component {
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
-            @数据可视化小组
+            @浙江大学软件学院 数据可视化小组
           </Footer>
         </Layout>
       </Layout>

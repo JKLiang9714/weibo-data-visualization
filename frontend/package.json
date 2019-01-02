@@ -36,6 +36,9 @@
     "echarts-for-react": "^2.0.15-beta.0",
     "express": "^4.16.4",
     "mongoose": "^5.4.1",
-    "size-sensor": "^0.2.2"
+    "size-sensor": "^0.2.2",
+    "antd": "latest",
+    "dva": "latest",
+    "react": "latest"
   }
 }

@@ -23,7 +23,7 @@ const getOption = (data) => {
 }
 
 
-function Compoenent(props) {
+function Component(props) {
     const { bloggers } = props;
 
     return <ReactEcharts
@@ -34,4 +34,4 @@ function Compoenent(props) {
     />
 }
 
-export default connect(mapStateToProps)(Compoenent)
+export default connect(mapStateToProps)(Component)

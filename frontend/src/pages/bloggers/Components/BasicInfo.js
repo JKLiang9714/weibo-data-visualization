@@ -1,37 +1,108 @@
 import React from 'react';
 import ReactEcharts from 'echarts-for-react';
-import { connect } from "dva";
+import { connect } from 'dva';
+import {Row, Col} from 'antd';
 
 const mapStateToProps = (state) => ({
-    bloggers: state.blogger.list
-})
+  bloggers: state.blogger.single,
+});
 
-const getOption = (data) => {
-    return {
-        xAxis: {
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+const getOption_WeiboNum = (data) => {
+  return {
+    series: [
+      {
+        title: {
+          fontSize: 20,
         },
-        yAxis: {
-            type: 'value'
+        max: 5000,
+        type: 'gauge',
+        detail: {
+          formatter: '{value}',
+          fontSize: 22,
         },
-        series: [{
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: 'line'
-        }]
-    }
+        data: [{
+          value: data.weibo_num,
+          name: '微博数',
+        }],
+      },
+    ]
+  };
+};
+
+const getOption_Following = (data) => {
+  return {
+    series: [
+      {
+        title: {
+          fontSize: 20,
+        },
+        max: 5000,
+        type: 'gauge',
+        detail: {
+          formatter: '{value}',
+          fontSize: 22,
+        },
+        data: [{
+          value: data.following,
+          name: '关注数',
+        }],
+      },
+    ]
+  };
+};
+
+const getOption_Followers = (data) => {
+  return {
+    series: [
+      {
+        title: {
+          fontSize: 20,
+        },
+        axisLabel: {
+          formatter: function (value) {
+            return value / 10000 + 'w';
+          }
+        },
+        max: 100000000,
+        type: 'gauge',
+        detail: {
+          formatter: '{value}',
+          fontSize: 22,
+        },
+        data: [{
+          value: data.followers,
+          name: '粉丝数',
+        }],
+      },
+    ]
+  };
+};
+
+function Component(props) {
+  const { bloggers } = props;
+
+  return <Row gutter={16}>
+    <Col span={8}> <ReactEcharts
+      style={{
+        height: 450,
+      }}
+      option={getOption_WeiboNum(bloggers)}
+    /> </Col>
+
+    <Col span={8}> <ReactEcharts
+      style={{
+        height: 450,
+      }}
+      option={getOption_Following(bloggers)}
+    /> </Col>
+
+    <Col span={8}> <ReactEcharts
+      style={{
+        height: 450,
+      }}
+      option={getOption_Followers(bloggers)}
+    /> </Col>
+  </Row>;
 }
 
-
-function Compoenent(props) {
-    const { bloggers } = props;
-
-    return <ReactEcharts
-        style={{
-            height: 500
-        }}
-        option={getOption(bloggers)}
-    />
-}
-
-export default connect(mapStateToProps)(Compoenent)
+export default connect(mapStateToProps)(Component);
