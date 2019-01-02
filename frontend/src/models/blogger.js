@@ -35,7 +35,7 @@ export default {
             yield put({
                 type: 'save',
                 payload: {
-                    single,
+                    single: single[0],
                     friends,
                     weiboContent,
                 }

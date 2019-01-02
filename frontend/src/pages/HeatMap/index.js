@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactEcharts from 'echarts-for-react';
+import { connect } from "dva";
 
+const mapStateToProps = (state) => ({
+    bloggers: state.blogger.list
+})
 
 const getOption = (data) => {
     return {
@@ -18,11 +22,16 @@ const getOption = (data) => {
     }
 }
 
-export default function () {
+
+function Compoenent(props) {
+    const { bloggers } = props;
+
     return <ReactEcharts
         style={{
             height: 500
         }}
-        option={getOption()}
+        option={getOption(bloggers)}
     />
 }
+
+export default connect(mapStateToProps)(Compoenent)
