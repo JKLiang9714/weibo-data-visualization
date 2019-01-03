@@ -8,7 +8,8 @@ export default {
         list: [],
         single: {},
         friends: [],
-        weiboContent: []
+        weiboContent: [],
+        wordCount: []
     },
 
     reducers: {
@@ -31,6 +32,7 @@ export default {
             const single = yield call(service.getBlogger, { name: payload.name })
             const friends = yield call(service.getBloggerFriends, { name: payload.name })
             const weiboContent = yield call(service.getBloggerWeiboContent, { name: payload.name })
+            const wordCount = yield call(service.getBloggerWordCount, { name: payload.name })
 
             yield put({
                 type: 'save',
@@ -38,6 +40,7 @@ export default {
                     single: single[0],
                     friends,
                     weiboContent,
+                    wordCount
                 }
             });
         },

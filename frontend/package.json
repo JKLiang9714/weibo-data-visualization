@@ -39,6 +39,7 @@
     "echarts-wordcloud": "^1.1.3",
     "express": "^4.16.4",
     "mongoose": "^5.4.1",
+    "nodejieba": "^2.3.0",
     "react": "latest",
     "size-sensor": "^0.2.2"
   }

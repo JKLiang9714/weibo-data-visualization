@@ -2,6 +2,7 @@ const express = require('express')
 const Blogger = require('../models/blogger')
 const BloggerFriend = require('../models/bloggerFriend')
 const WeiboContent = require('../models/weiboContent')
+const WordCount = require('../models/wordCount')
 const { rmEmptyProp } = require('../lib/utils')
 
 const router = express.Router()
@@ -62,6 +63,24 @@ router.get('/:name/weiboContent', (req, res) => {
         }
 
         res.json(weiboContent.weibo_content)
+    })
+})
+
+router.get('/:name/wordCount', (req, res) => {
+    var findObj = {
+        name: req.params.name,
+    }
+    console.info("Get blogger word Count", findObj)
+
+    WordCount.findOne(findObj, (err, wordCount) => {
+        if (err) {
+            return res.status(500).send(err)
+        }
+        if (!wordCount) {
+            return res.status(404).send(`${req.params.name} Not Existed`)
+        }
+
+        res.json(wordCount.wordCount)
     })
 })
 

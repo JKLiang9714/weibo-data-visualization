@@ -12,3 +12,6 @@ export const getBloggerFriends = (params) => {
 export const getBloggerWeiboContent = (params) => {
     return api.get(`/bloggers/${params.name}/weiboContent`);
 }
+export const getBloggerWordCount = (params) => {
+    return api.get(`/bloggers/${params.name}/wordCount`);
+}
