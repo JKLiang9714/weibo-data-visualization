@@ -15,3 +15,9 @@ export const getBloggerWeiboContent = (params) => {
 export const getBloggerWordCount = (params) => {
     return api.get(`/bloggers/${params.name}/wordCount`);
 }
+export const getSexDistribution = (params) => {
+    return api.get(`/statistic/sexDistribution`);
+}
+export const getLocationDistribution = (params) => {
+    return api.get(`/statistic/locationDistribution`);
+}

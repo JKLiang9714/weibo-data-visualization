@@ -9,7 +9,9 @@ export default {
         single: {},
         friends: [],
         weiboContent: [],
-        wordCount: []
+        wordCount: [],
+        sexDistribution: [],
+        locationDistribution: []
     },
 
     reducers: {
@@ -21,10 +23,15 @@ export default {
     effects: {
         *getList(action, { call, put }) {
             const list = yield call(service.getBloggers)
+            const sexDistribution = yield call(service.getSexDistribution)
+            const locationDistribution = yield call(service.getLocationDistribution)
+
             yield put({
                 type: 'save',
                 payload: {
-                    list
+                    list,
+                    sexDistribution: sexDistribution[0].values,
+                    locationDistribution: locationDistribution[0].values
                 }
             });
         },
