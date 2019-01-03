@@ -6,6 +6,7 @@ import WeiboPublishTime from './Components/WeiboPublishTime'
 import WordCloud from './Components/WordCloud'
 import Popularity from './Components/Popularity'
 import FriendsTopology from './Components/FriendsTopology'
+import FriendsDistribution from './Components/FriendsDistribution'
 
 const TabPane = Tabs.TabPane;
 
@@ -32,6 +33,9 @@ export default function (props) {
         </TabPane>
         <TabPane tab="近50条发布时间" key="6">
             <WeiboPublishTime />
+        </TabPane>
+        <TabPane tab="好友热力分布" key="7">
+          <FriendsDistribution />
         </TabPane>
     </Tabs>
 }
