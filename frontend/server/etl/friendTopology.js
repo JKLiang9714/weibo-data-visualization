@@ -22,6 +22,7 @@ co(function* () {
 
             const friendDoc = yield BloggerFriend.findOne({ name: friend.name }).exec()
             if (friendDoc) {
+                console.info("####",friendDoc.name, "exist in friend list####")
                 friendDoc.friends.forEach(friend_friend => {
                     if (friendDic[friend_friend]) {
                         console.log(
@@ -35,13 +36,11 @@ co(function* () {
                 })
             }
         }
-        console.log(`成功分析${doc.name}的朋友关系拓扑`)
         // save graph
         yield BloggerFriend.updateOne(
             { name: doc.name },
             { graph },
         )
-        console.info(`成功保存${doc.name}的朋友关系拓扑`)
     }
 
     console.log("DONE!")
