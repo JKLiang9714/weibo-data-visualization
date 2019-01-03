@@ -44,7 +44,7 @@ router.get('/:name/friends', (req, res) => {
             return res.status(404).send(`${req.params.name} Not Existed`)
         }
 
-        res.json(bloggerFrined.friends)
+        res.json(bloggerFrined.graph)
     })
 })
 

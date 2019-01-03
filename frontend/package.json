@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "antd": "latest",
+    "co": "^4.6.0",
     "dva": "latest",
     "echarts": "^4.2.0-rc.2",
     "echarts-for-react": "^2.0.15-beta.0",
