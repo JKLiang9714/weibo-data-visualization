@@ -32,13 +32,14 @@
     "node": ">=8.0.0"
   },
   "dependencies": {
-    "echarts": "^4.2.0-rc.2",
-    "echarts-for-react": "^2.0.15-beta.0",
-    "express": "^4.16.4",
-    "mongoose": "^5.4.1",
-    "size-sensor": "^0.2.2",
     "antd": "latest",
     "dva": "latest",
-    "react": "latest"
+    "echarts": "^4.2.0-rc.2",
+    "echarts-for-react": "^2.0.15-beta.0",
+    "echarts-wordcloud": "^1.1.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.1",
+    "react": "latest",
+    "size-sensor": "^0.2.2"
   }
 }

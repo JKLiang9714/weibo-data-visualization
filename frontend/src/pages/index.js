@@ -3,7 +3,6 @@ import { connect } from "dva";
 import Link from 'umi/link'
 import styles from './index.css';
 
-
 const mapStateToProps = (state) => ({
   bloggers: state.blogger.list
 })

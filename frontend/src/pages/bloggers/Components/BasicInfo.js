@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactEcharts from 'echarts-for-react';
 import { connect } from 'dva';
-import {Row, Col} from 'antd';
+import { Row, Col } from 'antd';
 
 const mapStateToProps = (state) => ({
   bloggers: state.blogger.single,

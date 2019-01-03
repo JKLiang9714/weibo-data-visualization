@@ -13,9 +13,9 @@ const getOption = (data) => {
   let comment_list = [];
   let forward_list = [];
   for (var i = 0; i < data.length; i++) {
-    like_list.push([ data[i].publish_time.split(" ")[0], data[i].like ]);
-    comment_list.push([ data[i].publish_time.split(" ")[0], data[i].comment ]);
-    forward_list.push([ data[i].publish_time.split(" ")[0], data[i].forward ]);
+    like_list.push([data[i].publish_time.split(" ")[0], data[i].like]);
+    comment_list.push([data[i].publish_time.split(" ")[0], data[i].comment]);
+    forward_list.push([data[i].publish_time.split(" ")[0], data[i].forward]);
   }
   popularity_data.push(like_list, comment_list, forward_list);
   for (var j = 0; j < popularity_data.length; j++) {
@@ -61,13 +61,13 @@ const getOption = (data) => {
       },
       markPoint: {
         data: [
-          {type: 'max', name: '最大值'},
-          {type: 'min', name: '最小值'}
+          { type: 'max', name: '最大值' },
+          { type: 'min', name: '最小值' }
         ]
       },
       markLine: {
         data: [
-          {type: 'average', name: '平均值'}
+          { type: 'average', name: '平均值' }
         ]
       }
     }, {
@@ -85,13 +85,13 @@ const getOption = (data) => {
       },
       markPoint: {
         data: [
-          {type: 'max', name: '最大值'},
-          {type: 'min', name: '最小值'}
+          { type: 'max', name: '最大值' },
+          { type: 'min', name: '最小值' }
         ]
       },
       markLine: {
         data: [
-          {type: 'average', name: '平均值'}
+          { type: 'average', name: '平均值' }
         ]
       }
     }, {
@@ -109,13 +109,13 @@ const getOption = (data) => {
       },
       markPoint: {
         data: [
-          {type: 'max', name: '最大值'},
-          {type: 'min', name: '最小值'}
+          { type: 'max', name: '最大值' },
+          { type: 'min', name: '最小值' }
         ]
       },
       markLine: {
         data: [
-          {type: 'average', name: '平均值'}
+          { type: 'average', name: '平均值' }
         ]
       }
     }]
