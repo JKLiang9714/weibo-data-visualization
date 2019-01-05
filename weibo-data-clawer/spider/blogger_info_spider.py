@@ -39,6 +39,7 @@ class BloggerInfo:
                     sex = info[index][3:]
                 elif '地区:' in info[index]:
                     birthplace = info[index][3:]
+            print(u"用户id: " + str(id))
             print(u"用户名: " + username)
             print(u"性别: " + sex)
             print(u"地区: " + birthplace)
@@ -51,27 +52,36 @@ class BloggerInfo:
     @staticmethod
     def get_other_info(id):
         try:
+            weibo_num = -1
+            following = -1
+            followers = -1
+
             url = "https://weibo.cn/u/%d?page=1" % id
             html = request_url(url)
             selector = etree.HTML(html)
             pattern = r"\d+\.?\d*"
             # 微博数
-            str_wb = selector.xpath("//div[@class='tip2']/span[@class='tc']/text()")[0]
-            guid = re.findall(pattern, str_wb, re.S | re.M)
-            weibo_num = int(guid[0])
-            print(u"微博数: " + str(weibo_num))
+            temp = selector.xpath("//div[@class='tip2']/span[@class='tc']/text()")
+            if len(temp) > 0:
+                str_wb = temp[0]
+                guid = re.findall(pattern, str_wb, re.S | re.M)
+                weibo_num = int(guid[0])
+                print(u"微博数: " + str(weibo_num))
 
             # 关注数
-            str_gz = selector.xpath("//div[@class='tip2']/a/text()")[0]
-            guid = re.findall(pattern, str_gz, re.M)
-            following = int(guid[0])
-            print(u"关注数: " + str(following))
+            temp = selector.xpath("//div[@class='tip2']/a/text()")
+            if len(temp) > 0:
+                str_gz = temp[0]
+                guid = re.findall(pattern, str_gz, re.M)
+                following = int(guid[0])
+                print(u"关注数: " + str(following))
 
             # 粉丝数
-            str_fs = selector.xpath("//div[@class='tip2']/a/text()")[1]
-            guid = re.findall(pattern, str_fs, re.M)
-            followers = int(guid[0])
-            print(u"粉丝数: " + str(followers))
+            if len(temp) > 1:
+                str_fs = selector.xpath("//div[@class='tip2']/a/text()")[1]
+                guid = re.findall(pattern, str_fs, re.M)
+                followers = int(guid[0])
+                print(u"粉丝数: " + str(followers))
             return weibo_num, following, followers
         except Exception as e:
             print("Error: ", e)

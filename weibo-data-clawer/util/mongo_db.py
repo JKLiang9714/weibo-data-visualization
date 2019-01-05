@@ -47,19 +47,23 @@ def save_to_info(info):
         if user_in_info_table(str(info.user_id)):
             print('该信息已存在于 blogger_info 表中！')
         else:
-            # 存储博主的基本信息到数据库中的 blogger_info 表
-            blogger_info_dict = {}
-            blogger_info_dict.update({
-                'id': str(info.user_id),
-                'name': info.username,
-                'sex': info.sex,
-                'birthplace': info.birthplace,
-                'weibo_num': info.weibo_num,
-                'following': info.following,
-                'followers': info.followers
-            })
-            db[blogger_info_table].insert(blogger_info_dict)
-            print('该信息已成功存储到 blogger_info 表中！')
+            if info.username == '' or info.sex == '' or info.birthplace == '' or \
+                    info.weibo_num == -1 or info.following == -1 or info.followers == -1:
+                print('未找到用户信息！')
+            else:
+                # 存储博主的基本信息到数据库中的 blogger_info 表
+                blogger_info_dict = {}
+                blogger_info_dict.update({
+                    'id': str(info.user_id),
+                    'name': info.username,
+                    'sex': info.sex,
+                    'birthplace': info.birthplace,
+                    'weibo_num': info.weibo_num,
+                    'following': info.following,
+                    'followers': info.followers
+                })
+                db[blogger_info_table].insert(blogger_info_dict)
+                print('该信息已成功存储到 blogger_info 表中！')
     except Exception as e:
         print("Error: ", e)
         traceback.print_exc()
@@ -85,12 +89,15 @@ def save_to_weibo(weibo):
                     'publish_tool': weibo.publish_tool[i - 1]
                 }
                 weibo_content_list.append(weibo_content)
-            weibo_content_dict.update({
-                'id': str(weibo.user_id),
-                'weibo_content': weibo_content_list
-            })
-            db[weibo_content_table].insert(weibo_content_dict)
-            print('该信息已成功存储到 weibo_content 表中！')
+            if len(weibo_content_list) == 0:
+                print("未找到微博信息！")
+            else:
+                weibo_content_dict.update({
+                    'id': str(weibo.user_id),
+                    'weibo_content': weibo_content_list
+                })
+                db[weibo_content_table].insert(weibo_content_dict)
+                print('该信息已成功存储到 weibo_content 表中！')
     except Exception as e:
         print("Error: ", e)
         traceback.print_exc()
@@ -109,7 +116,9 @@ def save_to_friend(friend):
                 blogger_friends_list.append({
                     'id': friend.friends[i]['id']
                 })
-            if len(blogger_friends_list) > 0:
+            if len(blogger_friends_list) == 0:
+                print("未找到好友信息！")
+            else:
                 blogger_friends_dict.update({
                     'id': str(friend.user_id),
                     'friends': blogger_friends_list

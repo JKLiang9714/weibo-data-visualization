@@ -109,14 +109,15 @@ class BloggerWeibo:
         try:
             html = request_url(weibo_link)
             selector = etree.HTML(html)
-            info = selector.xpath("//div[@class='c']")[1]
-            info = info.xpath("div/span[@class='ctt']")
-            if info:
-                wb_content = info[0].xpath("string(.)").replace(u"\u200b", "")\
-                    .encode(sys.stdout.encoding, "ignore").decode(sys.stdout.encoding)
-                return wb_content
-            else:
-                return ""
+            if len(selector.xpath("//div[@class='c']")) > 1:
+                info = selector.xpath("//div[@class='c']")[1]
+                info = info.xpath("div/span[@class='ctt']")
+                if info:
+                    wb_content = info[0].xpath("string(.)").replace(u"\u200b", "")\
+                        .encode(sys.stdout.encoding, "ignore").decode(sys.stdout.encoding)
+                    return wb_content
+                else:
+                    return ""
         except Exception as e:
             print("Error: ", e)
             traceback.print_exc()

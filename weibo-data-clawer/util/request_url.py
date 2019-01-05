@@ -26,6 +26,30 @@ USER_AGENTS = [
 cookie = COOKIE
 headers = {"User-Agent": random.choice(USER_AGENTS)}
 
+# 代理服务器列表
+proxyHostPort = [
+    "49.82.221.48:4243",
+    "116.248.161.93:4261",
+    "116.248.167.161:4261",
+    "14.106.106.12:4697",
+    "182.110.238.187:7685",
+    "125.123.46.173:4225",
+    "119.115.245.62:4237",
+    "182.34.195.80:4246",
+    "140.255.147.173:4246",
+    "182.246.158.144:4263",
+    "183.166.133.235:6458",
+    "112.245.195.123:4274",
+    "183.164.76.218:4265",
+    "121.205.190.111:4235",
+    "49.70.123.49:4276",
+    "118.120.187.140:4216",
+    "182.86.191.229:4282",
+    "112.113.156.28:4256",
+    "114.230.201.145:4265",
+    "183.154.243.40:4230",
+]
+
 
 def request_url(url):
     while True:
@@ -39,10 +63,21 @@ def request_url(url):
 
 
 if __name__ == '__main__':
-    test_url = 'https://weibo.cn/'
-    response = requests.get(test_url, headers=headers, cookies=cookie)
-    if response.status_code == 200:
-        html = response.content
-        print('Yes')
-    else:
-        print('No')
+    while True:
+        test_url = 'https://weibo.cn/'
+        proxyMeta = "http://" + random.choice(proxyHostPort)
+        proxies = {
+            "http": proxyMeta,
+            "https": proxyMeta,
+        }
+        print(proxies)
+        try:
+            test_response = requests.get(test_url, proxies=proxies)
+            if test_response.status_code == 200:
+                html = test_response.content
+                print('Yes')
+            else:
+                print('No')
+        except Exception as e:
+            print("Error: ", e)
+        time.sleep(1)
