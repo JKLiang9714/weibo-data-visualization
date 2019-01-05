@@ -1,6 +1,6 @@
 # Mongo 数据库
 MONGO_URL = 'localhost'
-MONGO_DB = 'Weibo'
+MONGO_DB = 'NewWeibo'
 MONGO_TABLE_BLOGGER_INFO = 'blogger_info'
 MONGO_TABLE_WEIBO_CONTENT = 'weibo_content'
 MONGO_TABLE_USER_ID = 'user_id'

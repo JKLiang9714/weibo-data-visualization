@@ -45,7 +45,7 @@ def user_in_friend_table(user_id):
 def save_to_info(info):
     try:
         if user_in_info_table(str(info.user_id)):
-            print('该信息已存在于 blogger_info 表中！')
+            print('该用户的基本信息已存在于 blogger_info 表中！')
         else:
             if info.username == '' or info.sex == '' or info.birthplace == '' or \
                     info.weibo_num == -1 or info.following == -1 or info.followers == -1:
@@ -63,7 +63,7 @@ def save_to_info(info):
                     'followers': info.followers
                 })
                 db[blogger_info_table].insert(blogger_info_dict)
-                print('该信息已成功存储到 blogger_info 表中！')
+                print('该用户的基本信息已成功存储到 blogger_info 表中！')
     except Exception as e:
         print("Error: ", e)
         traceback.print_exc()
@@ -73,7 +73,7 @@ def save_to_info(info):
 def save_to_weibo(weibo):
     try:
         if user_in_weibo_table(weibo.user_id):
-            print('该信息已存在于 weibo_content 表中！')
+            print('该用户的微博信息已存在于 weibo_content 表中！')
         else:
             # 存储博主的微博信息到数据库中的 weibo_content 表
             weibo_content_dict = {}
@@ -97,7 +97,7 @@ def save_to_weibo(weibo):
                     'weibo_content': weibo_content_list
                 })
                 db[weibo_content_table].insert(weibo_content_dict)
-                print('该信息已成功存储到 weibo_content 表中！')
+                print('该用户的微博信息已成功存储到 weibo_content 表中！共' + str(len(weibo_content_list)) + '条')
     except Exception as e:
         print("Error: ", e)
         traceback.print_exc()
@@ -107,27 +107,24 @@ def save_to_weibo(weibo):
 def save_to_friend(friend):
     try:
         if user_in_friend_table(friend.user_id):
-            print('该信息已存在于 blogger_friend 表中！')
+            print('该用户的好友信息已存在于 blogger_friend 表中！')
         else:
             # 存储博主的好友信息到数据库中的 blogger_friend 表
             blogger_friends_dict = {}
-            blogger_friends_list = []
-            for i in range(len(friend.friends)):
-                blogger_friends_list.append({
-                    'id': friend.friends[i]['id']
-                })
-            if len(blogger_friends_list) == 0:
+            if len(friend.friends) == 0:
                 print("未找到好友信息！")
             else:
                 blogger_friends_dict.update({
                     'id': str(friend.user_id),
-                    'friends': blogger_friends_list
+                    'friends': friend.friends
                 })
                 db[blogger_friend_table].insert(blogger_friends_dict)
-                print('该信息已成功存储到 blogger_friend 表中！')
+                print('该用户的好友信息已成功存储到 blogger_friend 表中！共' + str(len(friend.friends)) + '条')
 
-                # 将二级好友ID也存入表id_table
-                # db[id_table].insert_many(blogger_friends_list)
+            # 将二级好友ID也存入表id_table
+            if len(friend.not_in_id_table_friends) > 0:
+                db[id_table].insert_many(friend.not_in_id_table_friends)
+                print('该用户的好友ID已成功存储到 user_id 表中！共' + str(len(friend.not_in_id_table_friends)) + '条')
     except Exception as e:
         print("Error: ", e)
         traceback.print_exc()
