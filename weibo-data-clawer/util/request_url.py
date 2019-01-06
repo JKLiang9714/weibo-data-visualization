@@ -58,7 +58,7 @@ def request_url(url):
             html = response.content
             break
         print('未获取到网页内容，正在重试！')
-        time.sleep(random.random() * 20)
+        time.sleep(random.random() * 300)
     return html
 
 

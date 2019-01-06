@@ -22,10 +22,10 @@ def follow_all_id(user_id):
         page_num = 1
 
     # 若某用户的好友数为20，则要抓取好友的好友的好友，即第三层好友，需要抓取 20*20*20=8000 位用户时，才能获取到
-    # 为了能多抓好友的好友的好友的……，这里对第一层好友进行剪枝，每个人最多只抓2页，即20个好友
+    # 为了能多抓间接好友关系，这里对第一层好友进行剪枝，每个人最多只抓 FRIEND_PAGE_MAX 页，即 FRIEND_PAGE_MAX*10 个好友
     # 注意：新浪微博本身就限制了最多只能看到20页（weibo.cn），weibo.com会更少
-    if page_num > 2:
-        page_num = 2
+    if page_num > FRIEND_PAGE_MAX:
+        page_num = FRIEND_PAGE_MAX
 
     pattern = r"\d+\.?\d*"
     follow_id_dict_list = []

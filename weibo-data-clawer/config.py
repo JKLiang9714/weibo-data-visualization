@@ -7,8 +7,11 @@ MONGO_TABLE_USER_ID = 'user_id'
 MONGO_TABLE_BLOGGER_FRIEND = 'blogger_friend'
 
 # 每个博主爬取的微博上限
-WEIBO_NUMBER_MAX = 50   # 50 条
-WEIBO_DAYS_MAX = 90     # 3 个月
+WEIBO_NUMBER_MAX = 300  # 300 条
+WEIBO_DAYS_MAX = 365    # 12 个月
+
+# 每个博主爬取的好友上限
+FRIEND_PAGE_MAX = 2     # 2页，每页10位，即20位
 
 COOKIE = {"Cookie": "ALF=1547708441; SUB=_2A25xGKppDeRhGeVM7lcR9y_PyziIHXVS4jYhrDV6PUJbkdAKLXXgkW1NTLxziTc"
                     "RyMbhcu9QREH6osD5GwRBukFr; SUHB=0vJYZrqqyWEkoX; SCF=AsA34-dLr8-JsLCqXeR2_WUpwRiVdls9tq"

@@ -71,9 +71,9 @@ class BloggerWeibo:
 
                         self.weibo_crawl_num += 1
 
-                        # 当微博时间超出至今 WEIBO_DAYS_MAX 天、且已爬取数量超过 WEIBO_NUMBER_MAX 条时，停止爬取
+                        # 当微博时间超出至今 WEIBO_DAYS_MAX 天、或已爬取数量超过 WEIBO_NUMBER_MAX 条时，停止爬取
                         if (datetime.now() - datetime.strptime(publish_time, "%Y-%m-%d %H:%M")).days \
-                                >= WEIBO_DAYS_MAX and self.weibo_crawl_num >= WEIBO_NUMBER_MAX:
+                                >= WEIBO_DAYS_MAX or self.weibo_crawl_num >= WEIBO_NUMBER_MAX:
                             stop_crawler = True
                             break
                 if stop_crawler:
