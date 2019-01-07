@@ -12,7 +12,7 @@ const TabPane = Tabs.TabPane;
 
 export default function (props) {
     return <Tabs
-        tabPosition="left"
+        tabPosition="top"
         defaultActiveKey="1"
         style={{ height: 500 }}
     >
@@ -35,7 +35,7 @@ export default function (props) {
             <WeiboPublishTime />
         </TabPane>
         <TabPane tab="好友热力分布" key="7">
-          <FriendsDistribution />
+            <FriendsDistribution />
         </TabPane>
     </Tabs>
 }

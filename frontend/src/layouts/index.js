@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Layout, Icon, Menu } from "antd";
+import { Layout, Icon, Menu, Spin } from "antd";
+import { connect } from "dva";
 import Link from "umi/link";
 import styles from './index.css';
 import routerConfig from '../menuConfig'
@@ -14,6 +15,10 @@ function getPathNameIndex() {
   }) + ""
 }
 
+const mapStateToProps = (state) => ({
+  loading: state.loading.global
+})
+
 class BasicLayout extends Component {
 
   state = {
@@ -27,6 +32,8 @@ class BasicLayout extends Component {
   }
 
   render() {
+    const { loading } = this.props;
+
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider
@@ -61,15 +68,20 @@ class BasicLayout extends Component {
             />
           </Header>
           <Content style={{ margin: '0 16px' }}>
-
-            <div style={{
-              marginTop: 20,
-              padding: 20,
-              minHeight: 360,
-              background: "#fff"
-            }}>
-              {this.props.children}
-            </div>
+            <Spin
+              spinning={loading}
+              tip="Loading..."
+              size="large"
+            >
+              <div style={{
+                marginTop: 20,
+                padding: 20,
+                minHeight: 360,
+                background: "#fff"
+              }}>
+                {this.props.children}
+              </div>
+            </Spin>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
             @浙江大学软件学院 数据可视化小组
@@ -82,4 +94,4 @@ class BasicLayout extends Component {
 
 
 
-export default BasicLayout;
+export default connect(mapStateToProps)(BasicLayout);
