@@ -1,3 +1,7 @@
+/**
+ * DEPRECATED
+ * people is not needed for new weibo database model
+ */
 var { Schema } = require("mongoose");
 var db = require('../lib/mongo');
 

@@ -1,3 +1,8 @@
+/**
+ * DEPRECATED
+ * people is not needed for new weibo database model
+ */
+
 const BloggerFriend = require('../models/bloggerFriend');
 const Blogger = require('../models/blogger')
 const People = require('../models/people')

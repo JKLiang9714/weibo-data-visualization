@@ -2,13 +2,11 @@ var mongoose = require("mongoose");
 
 const IP = "10.82.82.15"
 const PORT = "27017"
-const DATABASE = "Weibo"
+const DATABASE = "NewWeibo"
 
-const USER = "root"
-const PASSWORD = "root"
 
 mongoose.connect(
-    `mongodb://${USER}:${PASSWORD}@${IP}:${PORT}/${DATABASE}`
+    `mongodb://${IP}:${PORT}/${DATABASE}`
 );
 
 const db = mongoose.connection

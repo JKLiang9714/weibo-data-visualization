@@ -1,3 +1,8 @@
+/**
+ * DEPRECATED
+ * caculate directly instead
+ */
+
 const People = require('../models/people')
 const Statistic = require('../models/statistic')
 const co = require('co');

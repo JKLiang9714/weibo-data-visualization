@@ -3,9 +3,11 @@ import ReactEcharts from 'echarts-for-react';
 import 'echarts/map/js/china';
 import { connect } from 'dva';
 
+
 const mapStateToProps = (state) => ({
   bloggers: state.blogger.locationDistribution,
 });
+
 
 const getOption = (data) => {
   let map_data = [];

@@ -5,11 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Attach to node",
             "type": "node",
             "request": "attach",
-            "restart": true,
-            "processId": "${command:PickProcess}"
-        }
+            "name": "Attach Node",
+            "port": 9229
+        },
     ]
 }

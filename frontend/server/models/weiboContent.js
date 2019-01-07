@@ -10,7 +10,11 @@ var weiboContentSchema = new Schema({
         like: Number,
         forward: Number,
         comment: Number,
-        publish_tool: String
+        publish_tool: String,
+        tfidf: [{
+            word: String,
+            weight: Number
+        }]
     }]
 }, { collection: 'weibo_content' })
 

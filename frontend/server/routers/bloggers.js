@@ -2,18 +2,18 @@ const express = require('express')
 const Blogger = require('../models/blogger')
 const BloggerFriend = require('../models/bloggerFriend')
 const WeiboContent = require('../models/weiboContent')
-const WordCount = require('../models/wordCount')
 const { rmEmptyProp } = require('../lib/utils')
+const nodejieba = require("nodejieba")
 
 const router = express.Router()
 
 
-router.get('/:name?', (req, res) => {
+router.get('/:id?', (req, res) => {
     var findObj = rmEmptyProp(
         Object.assign(
             {},
             req.query,
-            { name: req.params.name, },
+            { id: req.params.id, },
         )
     )
     console.info("Get bloggers", findObj)
@@ -30,27 +30,30 @@ router.get('/:name?', (req, res) => {
     })
 })
 
-router.get('/:name/friends', (req, res) => {
+router.get('/:id/friends', (req, res) => {
     var findObj = {
-        name: req.params.name,
+        id: req.params.id,
     }
     console.info("Get blogger Friends", findObj)
 
-    BloggerFriend.findOne(findObj, (err, bloggerFrined) => {
-        if (err) {
-            return res.status(500).send(err)
-        }
-        if (!bloggerFrined) {
-            return res.status(404).send(`${req.params.name} Not Existed`)
-        }
+    BloggerFriend.findOne(findObj)
+        .populate('blogger_id')
+        .populate('friends.blogger_id')
+        .exec((err, bloggerFrined) => {
+            if (err) {
+                return res.status(500).send(err)
+            }
+            if (!bloggerFrined) {
+                return res.status(404).send(`${req.params.id} Not Existed`)
+            }
 
-        res.json(bloggerFrined.graph)
-    })
+            res.json(bloggerFrined.friends)
+        })
 })
 
-router.get('/:name/weiboContent', (req, res) => {
+router.get('/:id/weiboContent', (req, res) => {
     var findObj = {
-        name: req.params.name,
+        id: req.params.id,
     }
     console.info("Get blogger weibo content", findObj)
 
@@ -59,30 +62,21 @@ router.get('/:name/weiboContent', (req, res) => {
             return res.status(500).send(err)
         }
         if (!weiboContent) {
-            return res.status(404).send(`${req.params.name} Not Existed`)
+            return res.status(404).send(`${req.params.id} Not Existed`)
         }
-
-        res.json(weiboContent.weibo_content)
+        let contents = weiboContent.weibo_content;
+        let sumContent = ""
+        // 每个weibo_content进行TFIDF分析
+        contents = contents.map(content => {
+            sumContent += " " + content.publish_content
+            content.tfidf = nodejieba.extract(content.publish_content, 5)
+            return content
+        });
+        res.json({
+            contents,
+            tfidf: nodejieba.extract(sumContent, 100)
+        })
     })
 })
-
-router.get('/:name/wordCount', (req, res) => {
-    var findObj = {
-        name: req.params.name,
-    }
-    console.info("Get blogger word Count", findObj)
-
-    WordCount.findOne(findObj, (err, wordCount) => {
-        if (err) {
-            return res.status(500).send(err)
-        }
-        if (!wordCount) {
-            return res.status(404).send(`${req.params.name} Not Existed`)
-        }
-
-        res.json(wordCount.wordCount)
-    })
-})
-
 
 module.exports = router

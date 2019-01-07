@@ -1,3 +1,8 @@
+/**
+ * DEPRECATED
+ * choose to count word directly
+ */
+
 const WordCount = require('../models/wordCount')
 const WeiboContent = require('../models/weiboContent')
 const nodejieba = require("nodejieba")

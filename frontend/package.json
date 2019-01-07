@@ -5,6 +5,7 @@
     "build": "umi build",
     "test": "umi test",
     "server": "node ./server/index.js",
+    "debugServer": "node --inspect ./server/index.js",
     "lint": "eslint --ext .js src mock tests",
     "precommit": "lint-staged"
   },
