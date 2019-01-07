@@ -4,20 +4,17 @@ export const getBloggers = () => {
     return api.get('/bloggers');
 };
 export const getBlogger = (params) => {
-    return api.get(`/bloggers/${params.name}`);
+    return api.get(`/bloggers/${params.id}`);
 }
 export const getBloggerFriends = (params) => {
-    return api.get(`/bloggers/${params.name}/friends`);
+    return api.get(`/bloggers/${params.id}/friends`);
 }
 export const getBloggerWeiboContent = (params) => {
-    return api.get(`/bloggers/${params.name}/weiboContent`);
-}
-export const getBloggerWordCount = (params) => {
-    return api.get(`/bloggers/${params.name}/wordCount`);
+    return api.get(`/bloggers/${params.id}/weiboContent`);
 }
 export const getSexDistribution = (params) => {
-    return api.get(`/statistic/sexDistribution`);
+    return api.get(`/statistic/sex`);
 }
 export const getLocationDistribution = (params) => {
-    return api.get(`/statistic/locationDistribution`);
+    return api.get(`/statistic/location`);
 }

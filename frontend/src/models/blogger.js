@@ -10,7 +10,7 @@ export default {
         single: {},
         friends: [],
         weiboContent: [],
-        wordCount: [],
+        tfidf: [],
         sexDistribution: [],
         locationDistribution: []
     },
@@ -37,18 +37,17 @@ export default {
             });
         },
         *getSingle({ payload }, { call, put }) {
-            const single = yield call(service.getBlogger, { name: payload.name })
-            const friends = yield call(service.getBloggerFriends, { name: payload.name })
-            const weiboContent = yield call(service.getBloggerWeiboContent, { name: payload.name })
-            const wordCount = yield call(service.getBloggerWordCount, { name: payload.name })
+            const single = yield call(service.getBlogger, { id: payload.id })
+            const friends = yield call(service.getBloggerFriends, { id: payload.id })
+            const weiboContent = yield call(service.getBloggerWeiboContent, { id: payload.id })
 
             yield put({
                 type: 'save',
                 payload: {
                     single: single[0],
                     friends,
-                    weiboContent,
-                    wordCount
+                    weiboContent: weiboContent.contents,
+                    tfidf: weiboContent.tfidf
                 }
             });
         },
@@ -67,7 +66,7 @@ export default {
                     dispatch({
                         type: "getSingle",
                         payload: {
-                            name: match[1]
+                            id: match[1]
                         }
                     })
                 }
