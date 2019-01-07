@@ -14,7 +14,7 @@ export default function (props) {
     return <Tabs
         tabPosition="top"
         defaultActiveKey="1"
-        style={{ height: 500 }}
+        style={{ minHeight: 600 }}
     >
         <TabPane tab="基本信息" key="1">
             <BasicInfo />

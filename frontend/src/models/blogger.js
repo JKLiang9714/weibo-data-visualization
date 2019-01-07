@@ -6,6 +6,7 @@ export default {
 
     state: {
         list: [],
+        page: 0,
         single: {},
         friends: [],
         weiboContent: [],
@@ -33,6 +34,7 @@ export default {
                 type: 'save',
                 payload: {
                     list,
+                    page: payload.page,
                     sexDistribution: sexDistribution,
                     locationDistribution: locationDistribution
                 }

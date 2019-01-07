@@ -3,7 +3,8 @@ import { connect } from "dva";
 import Link from 'umi/link'
 
 const mapStateToProps = (state) => ({
-  bloggers: state.blogger.list
+  bloggers: state.blogger.list,
+  page: state.blogger.page
 })
 
 const columns = [{
@@ -42,11 +43,12 @@ function Index(props) {
         pagination={{
           total: 3000,
           pageSize: PAGE_SIZE,
+          current: props.page + 1,
           onChange: page => {
             dispatch({
               type: "blogger/getList",
               payload: {
-                page,
+                page: page - 1,
                 pageSize: PAGE_SIZE
               }
             })

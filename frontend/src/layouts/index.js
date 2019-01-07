@@ -76,7 +76,7 @@ class BasicLayout extends Component {
               <div style={{
                 marginTop: 20,
                 padding: 20,
-                minHeight: 360,
+                minHeight: 400,
                 background: "#fff"
               }}>
                 {this.props.children}
