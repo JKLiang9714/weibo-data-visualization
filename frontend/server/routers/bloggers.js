@@ -7,6 +7,8 @@ const nodejieba = require("nodejieba")
 
 const router = express.Router()
 
+const filterWordList = ['视频', 'http', 'cn', '转发', '微博']
+const filterWord = (i) => filterWordList.indexOf(i.word) === -1
 
 router.get('/:id?', (req, res) => {
     const page = req.query.page - 0 || 0
@@ -67,12 +69,12 @@ router.get('/:id/weiboContent', (req, res) => {
         // 每个weibo_content进行TFIDF分析
         contents = contents.map(content => {
             sumContent += " " + content.publish_content
-            content.tfidf = nodejieba.extract(content.publish_content, 5)
+            content.tfidf = nodejieba.extract(content.publish_content, 10).filter(filterWord)
             return content
         });
         res.json({
             contents,
-            tfidf: nodejieba.extract(sumContent, 100)
+            tfidf: nodejieba.extract(sumContent, 100).filter(filterWord)
         })
     })
 })

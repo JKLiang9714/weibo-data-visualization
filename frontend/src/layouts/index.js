@@ -84,7 +84,9 @@ class BasicLayout extends Component {
             </Spin>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
-            @浙江大学软件学院 数据可视化小组
+            @浙江大学软件学院 数据可视化作业
+            <br />
+            by 毛怡伟，梁家坤，邵迪龙
           </Footer>
         </Layout>
       </Layout>

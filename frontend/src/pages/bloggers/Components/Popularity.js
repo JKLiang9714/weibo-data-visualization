@@ -1,21 +1,28 @@
 import React from 'react';
-import echarts from 'echarts';
 import ReactEcharts from 'echarts-for-react';
 import { connect } from 'dva';
 
 const mapStateToProps = (state) => ({
-  bloggers: state.blogger.weiboContent,
+  blogger: state.blogger.single,
+  contents: state.blogger.weiboContent,
 });
 
-const getOption = (data) => {
+const getOption = (data, name) => {
   let popularity_data = [];
   let like_list = [];
   let comment_list = [];
   let forward_list = [];
+  let bestContent = "";
+  let max = 0;
   for (var i = 0; i < data.length; i++) {
-    like_list.push([data[i].publish_time.split(" ")[0], data[i].like]);
-    comment_list.push([data[i].publish_time.split(" ")[0], data[i].comment]);
-    forward_list.push([data[i].publish_time.split(" ")[0], data[i].forward]);
+    like_list.push([data[i].publish_time, data[i].like]);
+    comment_list.push([data[i].publish_time, data[i].comment]);
+    forward_list.push([data[i].publish_time, data[i].forward]);
+    let popularity = data[i].like + data[i].comment + data[i].forward
+    if (popularity > max) {
+      max = popularity
+      bestContent = data[i]
+    }
   }
   popularity_data.push(like_list, comment_list, forward_list);
   for (var j = 0; j < popularity_data.length; j++) {
@@ -23,14 +30,16 @@ const getOption = (data) => {
   }
   return {
     title: {
-      text: '近50条微博的点赞数、评论数、转发数'
+      text: `${name} 最近微博热度趋势`,
+      subtext: `最受的微博提到了：${bestContent.tfidf.map(i=>i.word)}`,
+      rich:{}
     },
     legend: {
       right: 10,
       data: ['点赞数', '评论数', '转发数']
     },
     xAxis: {
-      type: 'category',
+      type: 'time',
       splitLine: {
         lineStyle: {
           type: 'dashed'
@@ -62,7 +71,6 @@ const getOption = (data) => {
       markPoint: {
         data: [
           { type: 'max', name: '最大值' },
-          { type: 'min', name: '最小值' }
         ]
       },
       markLine: {
@@ -86,7 +94,6 @@ const getOption = (data) => {
       markPoint: {
         data: [
           { type: 'max', name: '最大值' },
-          { type: 'min', name: '最小值' }
         ]
       },
       markLine: {
@@ -110,7 +117,6 @@ const getOption = (data) => {
       markPoint: {
         data: [
           { type: 'max', name: '最大值' },
-          { type: 'min', name: '最小值' }
         ]
       },
       markLine: {
@@ -124,13 +130,13 @@ const getOption = (data) => {
 
 
 function Component(props) {
-  const { bloggers } = props;
+  const { contents, blogger } = props;
 
   return <ReactEcharts
     style={{
       height: 500,
     }}
-    option={getOption(bloggers)}
+    option={getOption(contents, blogger.name)}
   />;
 }
 

@@ -14,24 +14,24 @@ export default function (props) {
     return <Tabs
         tabPosition="top"
         defaultActiveKey="1"
-        style={{ minHeight: 600 }}
+        style={{ minHeight: 500 }}
     >
         <TabPane tab="基本信息" key="1">
             <BasicInfo />
         </TabPane>
-        <TabPane tab="好友关系拓扑" key="2">
+        <TabPane tab="好友关系" key="2">
             <FriendsTopology />
         </TabPane>
-        <TabPane tab="三个月微博数趋势" key="3">
+        <TabPane tab="微博数趋势" key="3">
             <WeiboNum />
         </TabPane>
-        <TabPane tab="近50条微博热度" key="4">
+        <TabPane tab="热度趋势" key="4">
             <Popularity />
         </TabPane>
-        <TabPane tab="近50条微博词云" key="5">
+        <TabPane tab="微博词云" key="5">
             <WordCloud />
         </TabPane>
-        <TabPane tab="近50条发布时间" key="6">
+        <TabPane tab="发布时间分布" key="6">
             <WeiboPublishTime />
         </TabPane>
         <TabPane tab="好友热力分布" key="7">
