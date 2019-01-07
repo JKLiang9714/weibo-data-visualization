@@ -1,7 +1,7 @@
 import api from '../utils/request';
 
-export const getBloggers = () => {
-    return api.get('/bloggers');
+export const getBloggers = (params) => {
+    return api.get(`/bloggers?page=${params.page}&limit=${params.pageSize}`);
 };
 export const getBlogger = (params) => {
     return api.get(`/bloggers/${params.id}`);

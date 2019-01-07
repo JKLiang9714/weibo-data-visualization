@@ -1,7 +1,6 @@
-import { Table } from "antd";
+import { Table, Pagination } from "antd";
 import { connect } from "dva";
 import Link from 'umi/link'
-import styles from './index.css';
 
 const mapStateToProps = (state) => ({
   bloggers: state.blogger.list
@@ -10,7 +9,7 @@ const mapStateToProps = (state) => ({
 const columns = [{
   title: '姓名',
   dataIndex: 'name',
-  render: text => <Link to={`/bloggers/${text}`}>
+  render: (text, item) => <Link to={`/bloggers/${item.id}`}>
     {text}
   </Link>
 }, {
@@ -22,23 +21,40 @@ const columns = [{
 }, {
   title: '微博数',
   dataIndex: 'weibo_num',
-  sorter: (a, b) => a.weibo_num - b.weibo_num,
 }, {
   title: '关注',
   dataIndex: 'following',
-  sorter: (a, b) => a.following - b.following,
 }, {
   title: '粉丝',
   dataIndex: 'followers',
-  sorter: (a, b) => a.followers - b.followers,
 }];
 
+const PAGE_SIZE = 10
+
 function Index(props) {
+  const { dispatch } = props
+
   return (
     <div>
       <Table
         columns={columns}
         dataSource={props.bloggers}
+        onChange={(pagination) => {
+
+        }}
+        pagination={{
+          total: 3017,
+          pageSize: PAGE_SIZE,
+          onChange: page => {
+            dispatch({
+              type: "blogger/getList",
+              payload: {
+                page,
+                pageSize: PAGE_SIZE
+              }
+            })
+          }
+        }}
       />
     </div>
   );

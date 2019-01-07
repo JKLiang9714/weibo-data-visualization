@@ -1,5 +1,4 @@
 import * as service from '../services/bloggerService'
-import {Calendar} from 'antd'
 
 export default {
 
@@ -22,8 +21,11 @@ export default {
     },
 
     effects: {
-        *getList(action, { call, put }) {
-            const list = yield call(service.getBloggers)
+        *getList({ payload }, { call, put }) {
+            const list = yield call(service.getBloggers, {
+                page: payload.page || 0,
+                pageSize: payload.pageSize || 10
+            })
             const sexDistribution = yield call(service.getSexDistribution)
             const locationDistribution = yield call(service.getLocationDistribution)
 
@@ -31,8 +33,8 @@ export default {
                 type: 'save',
                 payload: {
                     list,
-                    sexDistribution: sexDistribution[0].values,
-                    locationDistribution: locationDistribution[0].values
+                    sexDistribution: sexDistribution,
+                    locationDistribution: locationDistribution
                 }
             });
         },
@@ -55,7 +57,10 @@ export default {
 
     subscriptions: {
         init({ dispatch }) {
-            dispatch({ type: "getList" })
+            dispatch({
+                type: "getList",
+                payload: { page: 0, pageSize: 10 }
+            })
         },
         setup({ dispatch, history }) {  // eslint-disable-line
             return history.listen(({ pathname }) => {

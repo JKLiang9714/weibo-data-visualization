@@ -9,25 +9,23 @@ const router = express.Router()
 
 
 router.get('/:id?', (req, res) => {
-    var findObj = rmEmptyProp(
-        Object.assign(
-            {},
-            req.query,
-            { id: req.params.id, },
-        )
-    )
-    console.info("Get bloggers", findObj)
+    const page = req.query.page - 0 || 0
+    const limit = req.query.limit - 0 || 10
 
-    Blogger.find(findObj, (err, bloggers) => {
-        if (err) {
-            return res.status(500).send(err)
-        }
-        if (bloggers.length === 0) {
-            return res.status(404).send(`Blogger Not Existed`)
-        }
+    console.info("Get bloggers", req.params.id, req.query)
 
-        res.json(bloggers)
-    })
+    Blogger.find(rmEmptyProp({ id: req.params.id }))
+        .skip(page * limit).limit(limit)
+        .exec((err, bloggers) => {
+            if (err) {
+                return res.status(500).send(err)
+            }
+            if (bloggers.length === 0) {
+                return res.status(404).send(`Blogger Not Existed`)
+            }
+
+            res.json(bloggers)
+        })
 })
 
 router.get('/:id/friends', (req, res) => {
