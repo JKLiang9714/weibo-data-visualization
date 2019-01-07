@@ -1,36 +1,49 @@
 import React from 'react';
 import ReactEcharts from 'echarts-for-react';
 import { connect } from "dva";
+import 'echarts-wordcloud'
 
 const mapStateToProps = (state) => ({
-    bloggers: state.blogger.list
+    tfidfs: state.blogger.tfidf
 })
 
-const getOption = (data) => {
+const getOption = (tfidfs) => {
     return {
-        xAxis: {
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            type: 'value'
-        },
         series: [{
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: 'line'
+            type: "wordCloud",
+            textStyle: {
+                normal: {
+                    fontFamily: 'sans-serif',
+                    color: function () {
+                        return 'rgb(' + [
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160)
+                        ].join(',') + ')';
+                    }
+                },
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            data: tfidfs.map(i => ({
+                name: i.word,
+                value: i.weight
+            }))
         }]
     }
 }
 
 
 function Component(props) {
-    const { bloggers } = props;
+    const { tfidfs } = props;
 
     return <ReactEcharts
         style={{
             height: 500
         }}
-        option={getOption(bloggers)}
+        option={getOption(tfidfs)}
     />
 }
 

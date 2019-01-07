@@ -40,13 +40,18 @@ export default {
         },
         *getSingle({ payload }, { call, put }) {
             const single = yield call(service.getBlogger, { id: payload.id })
+            yield put({
+                type: 'save',
+                payload: {
+                    single: single[0],
+                }
+            })
             const friends = yield call(service.getBloggerFriends, { id: payload.id })
             const weiboContent = yield call(service.getBloggerWeiboContent, { id: payload.id })
 
             yield put({
                 type: 'save',
                 payload: {
-                    single: single[0],
                     friends,
                     weiboContent: weiboContent.contents,
                     tfidf: weiboContent.tfidf

@@ -1,4 +1,4 @@
-import { Table, Pagination } from "antd";
+import { Table } from "antd";
 import { connect } from "dva";
 import Link from 'umi/link'
 
@@ -39,11 +39,8 @@ function Index(props) {
       <Table
         columns={columns}
         dataSource={props.bloggers}
-        onChange={(pagination) => {
-
-        }}
         pagination={{
-          total: 3017,
+          total: 3000,
           pageSize: PAGE_SIZE,
           onChange: page => {
             dispatch({
