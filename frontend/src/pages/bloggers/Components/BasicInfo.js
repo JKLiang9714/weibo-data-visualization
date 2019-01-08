@@ -89,12 +89,13 @@ function Component(props) {
       option={getOption_WeiboNum(bloggers)}
     /> </Col>
 
-    <Col span={8}> <ReactEcharts
-      style={{
-        height: 450,
-      }}
-      option={getOption_Following(bloggers)}
-    /> </Col>
+    <Col span={8}>
+      <ReactEcharts
+        style={{
+          height: 450,
+        }}
+        option={getOption_Following(bloggers)}
+      /> </Col>
 
     <Col span={8}> <ReactEcharts
       style={{

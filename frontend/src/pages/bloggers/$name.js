@@ -13,7 +13,7 @@ const TabPane = Tabs.TabPane;
 export default function (props) {
     return <Tabs
         tabPosition="top"
-        defaultActiveKey="2"
+        defaultActiveKey="6"
         style={{ minHeight: 500 }}
     >
         <TabPane tab="基本信息" key="1">
@@ -31,7 +31,7 @@ export default function (props) {
         <TabPane tab="微博词云" key="5">
             <WordCloud />
         </TabPane>
-        <TabPane tab="发布时间分布" key="6">
+        <TabPane tab="发布时间" key="6">
             <WeiboPublishTime />
         </TabPane>
         <TabPane tab="好友热力分布" key="7">
