@@ -13,7 +13,7 @@ const TabPane = Tabs.TabPane;
 export default function (props) {
     return <Tabs
         tabPosition="top"
-        defaultActiveKey="1"
+        defaultActiveKey="6"
         style={{ minHeight: 500 }}
     >
         <TabPane tab="基本信息" key="1">

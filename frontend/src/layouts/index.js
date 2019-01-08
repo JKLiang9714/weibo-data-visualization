@@ -16,7 +16,8 @@ function getPathNameIndex() {
 }
 
 const mapStateToProps = (state) => ({
-  loading: state.loading.global
+  loading: state.loading.global,
+  blogger: state.blogger.single
 })
 
 class BasicLayout extends Component {
@@ -32,7 +33,7 @@ class BasicLayout extends Component {
   }
 
   render() {
-    const { loading } = this.props;
+    const { loading, blogger } = this.props;
 
     return (
       <Layout style={{ minHeight: '100vh' }}>
@@ -66,6 +67,12 @@ class BasicLayout extends Component {
               type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
               onClick={this.toggle}
             />
+            <span style={{
+              float: "right",
+              marginRight: 30
+            }}>
+              {blogger ? blogger.name : ""}
+            </span>
           </Header>
           <Content style={{ margin: '0 16px' }}>
             <Spin

@@ -3,7 +3,7 @@ import ReactEcharts from 'echarts-for-react';
 import { connect } from "dva";
 
 const mapStateToProps = (state) => ({
-    bloggers: state.blogger.list
+    bloggers: state.blogger.friends
 })
 
 const getOption = (data) => {

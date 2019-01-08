@@ -23,6 +23,7 @@ const getOption = (tfidfs, name) => {
             type: "wordCloud",
             width: '70%',
             height: '80%',
+            rotationRange: [0, 0],
             textStyle: {
                 normal: {
                     fontFamily: 'sans-serif',
@@ -51,7 +52,6 @@ function Component(props) {
     let { tfidfs, blogger } = props;
 
     // 过滤和博主名字相关的关键字
-    console.log(tfidfs.length)
     tfidfs = tfidfs.filter(item =>
         blogger.name.indexOf(item.word) === -1
     )

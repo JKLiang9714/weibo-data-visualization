@@ -39,6 +39,10 @@ router.get('/:id/friends', (req, res) => {
     BloggerFriend.findOne(findObj)
         .populate('blogger_id')
         .populate('friends.blogger_id')
+        .populate({
+            path: 'friends.friend_id',
+            populate: { path: 'friends.friend_id' }
+        })
         .exec((err, bloggerFrined) => {
             if (err) {
                 return res.status(500).send(err)

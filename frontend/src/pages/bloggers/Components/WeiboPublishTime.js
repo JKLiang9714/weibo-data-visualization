@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactEcharts from 'echarts-for-react';
 import { connect } from 'dva';
-import {Row, Col} from 'antd';
+import { Row, Col } from 'antd';
 
 const mapStateToProps = (state) => ({
   bloggers: state.blogger.weiboContent,
 });
+
+// const ignoreLabel = (params) => params.percent < 5 ? "" : "123"
+// const ignoreLabelLine = (params) => params.percent < 5
 
 const getOption_Week = (data) => {
   let week_data = [];
@@ -15,32 +18,35 @@ const getOption_Week = (data) => {
   for (var j = 0; j < data.length; j++) {
     var dateArray = data[j].publish_time.split(" ")[0].split("-");
     var date = new Date(dateArray[0], parseInt(dateArray[1] - 1), dateArray[2]);
-    week_data[date.getDay()+1]++;
+    week_data[date.getDay() + 1]++;
   }
   return {
-    tooltip : {
+    tooltip: {
       trigger: 'item',
       formatter: "{a} <br/>{b} : {c} ({d}%)"
     },
     legend: {
+      show: false,
       orient: 'horizontal',
       left: 'center',
-      data: ['周一','周二','周三','周四','周五','周六','周日']
+      data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
     },
-    series : [
+    series: [
       {
         name: '访问来源',
         type: 'pie',
-        radius : '55%',
+        radius: [20, 110],
+        center: ['25%', '50%'],
+        roseType: 'radius',
         center: ['50%', '60%'],
-        data:[
-          {value:week_data[1], name:'周一'},
-          {value:week_data[2], name:'周二'},
-          {value:week_data[3], name:'周三'},
-          {value:week_data[4], name:'周四'},
-          {value:week_data[5], name:'周五'},
-          {value:week_data[6], name:'周六'},
-          {value:week_data[7], name:'周日'}
+        data: [
+          { value: week_data[1], name: '周一' },
+          { value: week_data[2], name: '周二' },
+          { value: week_data[3], name: '周三' },
+          { value: week_data[4], name: '周四' },
+          { value: week_data[5], name: '周五' },
+          { value: week_data[6], name: '周六' },
+          { value: week_data[7], name: '周日' }
         ],
         itemStyle: {
           emphasis: {
@@ -65,47 +71,50 @@ const getOption_Time = (data) => {
     time_data[hour]++;
   }
   return {
-    tooltip : {
+    tooltip: {
       trigger: 'item',
       formatter: "{a} <br/>{b} : {c} ({d}%)"
     },
     legend: {
+      show: false,
       orient: 'horizontal',
       left: 'center',
-      data: ['0点','1点','2点','3点','4点','5点','6点','7点','8点','9点','10点','11点','12点',
-        '13点','14点','15点','16点','17点','18点','19点','20点','21点','22点','23点']
+      data: ['0点', '1点', '2点', '3点', '4点', '5点', '6点', '7点', '8点', '9点', '10点', '11点', '12点',
+        '13点', '14点', '15点', '16点', '17点', '18点', '19点', '20点', '21点', '22点', '23点']
     },
-    series : [
+    series: [
       {
         name: '访问来源',
         type: 'pie',
-        radius : '55%',
+        radius: '55%',
         center: ['50%', '60%'],
-        data:[
-          {value:time_data[0], name:'0点'},
-          {value:time_data[1], name:'1点'},
-          {value:time_data[2], name:'2点'},
-          {value:time_data[3], name:'3点'},
-          {value:time_data[4], name:'4点'},
-          {value:time_data[5], name:'5点'},
-          {value:time_data[6], name:'6点'},
-          {value:time_data[7], name:'7点'},
-          {value:time_data[8], name:'8点'},
-          {value:time_data[9], name:'9点'},
-          {value:time_data[10], name:'10点'},
-          {value:time_data[11], name:'11点'},
-          {value:time_data[12], name:'12点'},
-          {value:time_data[13], name:'13点'},
-          {value:time_data[14], name:'14点'},
-          {value:time_data[15], name:'15点'},
-          {value:time_data[16], name:'16点'},
-          {value:time_data[17], name:'17点'},
-          {value:time_data[18], name:'18点'},
-          {value:time_data[19], name:'19点'},
-          {value:time_data[20], name:'20点'},
-          {value:time_data[21], name:'21点'},
-          {value:time_data[22], name:'22点'},
-          {value:time_data[23], name:'23点'}
+        radius: [20, 110],
+        roseType: 'radius',
+        data: [
+          { value: time_data[0], name: '0点' },
+          { value: time_data[1], name: '1点' },
+          { value: time_data[2], name: '2点' },
+          { value: time_data[3], name: '3点' },
+          { value: time_data[4], name: '4点' },
+          { value: time_data[5], name: '5点' },
+          { value: time_data[6], name: '6点' },
+          { value: time_data[7], name: '7点' },
+          { value: time_data[8], name: '8点' },
+          { value: time_data[9], name: '9点' },
+          { value: time_data[10], name: '10点' },
+          { value: time_data[11], name: '11点' },
+          { value: time_data[12], name: '12点' },
+          { value: time_data[13], name: '13点' },
+          { value: time_data[14], name: '14点' },
+          { value: time_data[15], name: '15点' },
+          { value: time_data[16], name: '16点' },
+          { value: time_data[17], name: '17点' },
+          { value: time_data[18], name: '18点' },
+          { value: time_data[19], name: '19点' },
+          { value: time_data[20], name: '20点' },
+          { value: time_data[21], name: '21点' },
+          { value: time_data[22], name: '22点' },
+          { value: time_data[23], name: '23点' }
         ],
         itemStyle: {
           emphasis: {

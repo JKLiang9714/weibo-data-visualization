@@ -81,6 +81,13 @@ export default {
                             id: match[1]
                         }
                     })
+                } else {
+                    dispatch({
+                        type: "save",
+                        payload: {
+                            single: {}
+                        }
+                    })
                 }
             })
         },
