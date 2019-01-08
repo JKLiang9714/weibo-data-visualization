@@ -42,7 +42,7 @@ function generateGraph(friends, blogger) {
             && top.friend_id.friends
             && top.friend_id.friends.length > 0) {
             // add friend's friends into queue
-            top.friend_id.friends.forEach(people => {
+            top.friend_id.friends.slice(0, 20).forEach(people => {
                 // add nodes
                 if (!nameDic[people.name]) {
                     nameDic[people.name] = true

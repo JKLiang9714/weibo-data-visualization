@@ -8,7 +8,8 @@ const nodejieba = require("nodejieba")
 const router = express.Router()
 
 const filterWordList = ['视频', 'http', 'cn', '转发', '微博']
-const filterWord = (i) => filterWordList.indexOf(i.word) === -1
+// 过滤无用词和数字
+const filterWord = (i) => filterWordList.indexOf(i.word) === -1 && isNaN(i.word - 0)
 
 router.get('/:id?', (req, res) => {
     const page = req.query.page - 0 || 0
