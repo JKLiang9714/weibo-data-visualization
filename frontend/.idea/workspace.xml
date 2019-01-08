@@ -2,11 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1dc6333a-40d4-4245-928b-782c4acb56b5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/blogger.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/blogger.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/BloggerDistribution/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/BloggerDistribution/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/HeatMap/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/HeatMap/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/bloggers/Components/WeiboNum.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/bloggers/Components/WeiboNum.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weibo-data-clawer/.idea/dictionaries/Dell.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weibo-data-clawer/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weibo-data-clawer/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weibo-data-clawer/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weibo-data-clawer/.idea/weibo-data-clawer.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weibo-data-clawer/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weibo-data-clawer/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weibo-data-clawer/config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weibo-data-clawer/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weibo-data-clawer/spider/blogger_friend_spider.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weibo-data-clawer/spider/blogger_info_spider.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weibo-data-clawer/spider/blogger_weibo_spider.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weibo-data-clawer/spider/user_id_spider.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weibo-data-clawer/util/mongo_db.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weibo-data-clawer/util/request_url.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weibo-data-clawer/util/write_to_txt.py" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,13 +36,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/blogger.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="20" lean-forward="true" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+            <state relative-caret-position="286">
+              <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/BloggerDistribution/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1232">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
               <folding>
-                <element signature="e#0#53#0" expanded="true" />
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pages/bloggers/Components/WeiboNum.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3102">
+              <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,8 +96,9 @@
         <option value="$PROJECT_DIR$/src/pages/bloggers/$name.js" />
         <option value="$PROJECT_DIR$/src/pages/bloggers/Components/FriendsDistribution.js" />
         <option value="$PROJECT_DIR$/src/pages/HeatMap/index.js" />
-        <option value="$PROJECT_DIR$/src/pages/BloggerDistribution/index.js" />
         <option value="$PROJECT_DIR$/src/models/blogger.js" />
+        <option value="$PROJECT_DIR$/src/pages/BloggerDistribution/index.js" />
+        <option value="$PROJECT_DIR$/src/pages/bloggers/Components/WeiboNum.js" />
       </list>
     </option>
   </component>
@@ -70,10 +106,10 @@
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-94" />
-    <option name="y" value="101" />
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
-    <option name="height" value="1096" />
+    <option name="height" value="1216" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -83,29 +119,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -185,11 +200,12 @@
       <workItem from="1546669047281" duration="70000" />
       <workItem from="1546669140741" duration="98000" />
       <workItem from="1546669256638" duration="368000" />
+      <workItem from="1546933211156" duration="239000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34172000" />
+    <option name="totallyTimeSpent" value="34411000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -201,9 +217,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1216" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49801588" visible="true" weight="0.20028308" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49801588" visible="true" weight="0.20021075" />
       <window_info id="Structure" order="1" sideWeight="0.5019841" side_tool="true" weight="0.19957687" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" sideWeight="0.5019841" side_tool="true" weight="0.19957687" />
@@ -217,7 +233,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32884097" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.22478387" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.41366574" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -335,13 +351,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/_mongoose@5.4.1@mongoose/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/_mongoose@5.4.1@mongoose/index.js" />
     <entry file="file://$PROJECT_DIR$/src/pages/bloggers/Components/WeiboPublishTime.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
@@ -394,22 +404,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/blogger.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/BloggerDistribution/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+        <state relative-caret-position="1232">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/blogger.js">
+    <entry file="file://$PROJECT_DIR$/src/pages/bloggers/Components/WeiboNum.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="20" lean-forward="true" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+        <state relative-caret-position="3102">
+          <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
           <folding>
-            <element signature="e#0#53#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
