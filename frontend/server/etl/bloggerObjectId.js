@@ -3,7 +3,7 @@ const Blogger = require('../models/blogger')
 const co = require('co');
 
 // 不用从头开始计算
-const START = 1000
+const START = 0
 
 co(function* () {
     const cursor = BloggerFriend.find({}).cursor()
@@ -24,6 +24,10 @@ co(function* () {
         }
         doc.blogger_id = blogger._id
         doc.name = blogger.name
+        doc.followers = blogger.followers
+        doc.sex = blogger.sex
+        doc.birthplace = blogger.birthplace
+
 
         const newFriends = []
         for (let i = 0; i < doc.friends.length; i++) {
@@ -35,7 +39,10 @@ co(function* () {
                     blogger_id: blogger._id,
                     friend_id: bloggerFriend._id,
                     id: blogger.id,
-                    name: blogger.name
+                    name: blogger.name,
+                    followers: blogger.followers,
+                    sex: blogger.sex,
+                    birthplace: blogger.birthplace
                 })
             }
         }

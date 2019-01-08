@@ -3,22 +3,20 @@ var db = require('../lib/mongo');
 
 var bloggerFriendSchema = new Schema({
     id: String,
-    blogger_id: {
-        type: Schema.Types.ObjectId,
-        ref: 'Blogger'
-    },
     name: String,
+    followers: Number,
+    sex: String,
+    birthplace: String,
     friends: [{
-        blogger_id: {
-            type: Schema.Types.ObjectId,
-            ref: 'Blogger'
-        },
         friend_id: {
             type: Schema.Types.ObjectId,
             ref: 'BloggerFriend'
         },
         id: String,
         name: String,
+        followers: Number,
+        sex: String,
+        birthplace: String,
     }]
 }, { collection: 'blogger_friend' })
 
