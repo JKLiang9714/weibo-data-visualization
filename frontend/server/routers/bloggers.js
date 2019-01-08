@@ -11,13 +11,33 @@ const filterWordList = ['视频', 'http', 'cn', '转发', '微博']
 // 过滤无用词和数字
 const filterWord = (i) => filterWordList.indexOf(i.word) === -1 && isNaN(i.word - 0)
 
+// 查询总数
+router.get('/count', (req, res) => {
+    console.info("Get bloggers count", req.params.id, req.query)
+
+    Blogger.count(rmEmptyProp({
+        name: req.query.name ? { $regex: req.query.name } : undefined
+    }), (err, count) => {
+        if (err) {
+            return res.status(500).send(err)
+        }
+
+        res.json({
+            count
+        })
+    })
+})
+
 router.get('/:id?', (req, res) => {
     const page = req.query.page - 0 || 0
     const limit = req.query.limit - 0 || 10
 
     console.info("Get bloggers", req.params.id, req.query)
 
-    Blogger.find(rmEmptyProp({ id: req.params.id }))
+    Blogger.find(rmEmptyProp({
+        id: req.params.id,
+        name: req.query.name ? { $regex: req.query.name } : undefined
+    }))
         .skip(page * limit).limit(limit)
         .exec((err, bloggers) => {
             if (err) {
@@ -30,6 +50,8 @@ router.get('/:id?', (req, res) => {
             res.json(bloggers)
         })
 })
+
+
 
 router.get('/:id/friends', (req, res) => {
     var findObj = {

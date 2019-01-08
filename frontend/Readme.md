@@ -29,11 +29,11 @@ npm start
 
 ## API文档
 
-- GET /api/bloggers 获取所有博主
+- GET /api/bloggers?page=0&limit=10&name=杨 获取博主列表
+- GET /api/bloggers/count?name=杨 获取博主数量
 - GET /api/bloggers/:name 获取单个博主（按姓名）的基本信息
 - GET /api/blogger/:name/friends 获取博主朋友列表
 - GET /api/blogger/:name/weiboContent 获取博主微博列表
-- GET /api/blogger/:name/wordCount 获取词云图数据
-- GET /api/statistic/sexDistribution 获取性别分布
-- GET /api/statistic/locationDistribution 获取性别分布
+- GET /api/statistic/sex 获取性别分布
+- GET /api/statistic/location 获取性别分布
 

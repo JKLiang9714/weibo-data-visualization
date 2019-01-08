@@ -7,6 +7,7 @@ export default {
     state: {
         list: [],
         page: 0,
+        count: 0,
         single: {},
         friends: [],
         weiboContent: [],
@@ -22,21 +23,33 @@ export default {
     },
 
     effects: {
-        *getList({ payload }, { call, put }) {
-            const list = yield call(service.getBloggers, {
-                page: payload.page || 0,
-                pageSize: payload.pageSize || 10
-            })
+        *getDistribution({ payload }, { call, put }) {
             const sexDistribution = yield call(service.getSexDistribution)
             const locationDistribution = yield call(service.getLocationDistribution)
+            yield put({
+                type: 'save', payload: {
+                    sexDistribution: sexDistribution,
+                    locationDistribution: locationDistribution
+                }
+            });
+        },
+        *getList({ payload }, { call, put }) {
+            const counter = yield call(service.getBloggersCount, {
+                name: payload.name
+            })
+            const list = yield call(service.getBloggers, {
+                page: payload.page || 0,
+                pageSize: payload.pageSize || 10,
+                name: payload.name
+            })
 
             yield put({
                 type: 'save',
                 payload: {
                     list,
+                    count: counter.count,
                     page: payload.page,
-                    sexDistribution: sexDistribution,
-                    locationDistribution: locationDistribution
+
                 }
             });
         },
@@ -64,6 +77,9 @@ export default {
 
     subscriptions: {
         init({ dispatch }) {
+            dispatch({
+                type: "getDistribution",
+            })
             dispatch({
                 type: "getList",
                 payload: { page: 0, pageSize: 10 }
