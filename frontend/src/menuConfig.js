@@ -10,12 +10,12 @@ export default [
     },
     {
         router: "/BloggerDistribution",
-        name: "博主分布",
+        name: "博主男女分布",
         icon: "pie-chart"
     },
     {
         router: "/HeatMap",
-        name: "地域分布热力图",
+        name: "博主地域分布",
         icon: "heat-map"
     }
 ]

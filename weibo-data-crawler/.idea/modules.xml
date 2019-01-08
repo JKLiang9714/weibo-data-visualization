@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/weibo-data-clawer.iml" filepath="$PROJECT_DIR$/.idea/weibo-data-clawer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/weibo-data-crawler.iml" filepath="$PROJECT_DIR$/.idea/weibo-data-crawler.iml" />
     </modules>
   </component>
 </project>
