@@ -41,14 +41,21 @@ def user_in_friend_table(user_id):
         print(e.__traceback__)
 
 
+# 判断用户是否合法
+def user_is_valid(info):
+    if info.username == '' or info.sex == '' or info.birthplace == '' or \
+            info.weibo_num == -1 or info.following == -1 or info.followers == -1:
+        return False
+    return True
+
+
 # 将信息存入 blogger_info 表中
 def save_to_info(info):
     try:
         if user_in_info_table(str(info.user_id)):
             print('该用户的基本信息已存在于 blogger_info 表中！')
         else:
-            if info.username == '' or info.sex == '' or info.birthplace == '' or \
-                    info.weibo_num == -1 or info.following == -1 or info.followers == -1:
+            if not user_is_valid(info):
                 print('未找到该用户的基本信息！')
             else:
                 # 存储博主的基本信息到数据库中的 blogger_info 表

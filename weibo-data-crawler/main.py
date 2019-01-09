@@ -6,7 +6,7 @@ from spider.blogger_info_spider import BloggerInfo
 from spider.blogger_weibo_spider import BloggerWeibo
 from spider.blogger_friend_spider import BloggerFriend
 from util.mongo_db import user_in_info_table, user_in_weibo_table, user_in_friend_table, \
-    save_to_info, save_to_weibo, save_to_friend, get_ids, get_user_number
+    save_to_info, save_to_weibo, save_to_friend, get_ids, get_user_number, user_is_valid
 from config import BEGIN_INDEX
 
 
@@ -28,6 +28,9 @@ def main():
                 print('该用户的基本信息已存在于 blogger_info 表中！')
             else:
                 info.get_user_info()
+                if not user_is_valid(info):
+                    print('未找到该用户的基本信息！')
+                    continue
                 save_to_info(info)
                 flag = True
 
