@@ -199,7 +199,7 @@ function Component(props) {
     <Col span={8}>
       <ReactEcharts
         style={{
-          height: 500,
+          height: 700,
         }}
         option={getOption_Week(weiboContent, blogger)}
       />
@@ -207,7 +207,7 @@ function Component(props) {
     <Col span={8}>
       <ReactEcharts
         style={{
-          height: 500,
+          height: 700,
         }}
         option={getOption_Time(weiboContent, blogger)}
       />
@@ -215,7 +215,7 @@ function Component(props) {
     <Col span={8}>
       <ReactEcharts
         style={{
-          height: 500,
+          height: 700,
         }}
         option={getOption_Polar(weiboContent, blogger)}
       />

@@ -21,8 +21,8 @@ const getOption = (tfidfs, name) => {
         },
         series: [{
             type: "wordCloud",
-            width: '70%',
-            height: '80%',
+            width: '100%',
+            height: '100%',
             rotationRange: [0, 0],
             textStyle: {
                 normal: {
@@ -60,7 +60,7 @@ function Component(props) {
 
     return <ReactEcharts
         style={{
-            height: 500
+            height: 700
         }}
         option={getOption(tfidfs, blogger.name)}
     />

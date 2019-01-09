@@ -39,12 +39,12 @@ const getOption = (blogger, weibo) => {
   var data = getCalenderData(weibo);
   return {
     title: {
-      top: 30,
       text: `2018年 ${blogger.name} 每天发布的微博数量`,
       left: 'center',
+      top: 30,
       textStyle: {
-        color: '#333',
-      },
+        fontSize: 30
+      }
     },
     tooltip: {
       trigger: 'item',
@@ -59,7 +59,7 @@ const getOption = (blogger, weibo) => {
       show: true
     },
     calendar: [{
-      top: 100,
+      top: 150,
       left: 'center',
       range: ['2018-01-01', '2018-06-30'],
       splitLine: {
@@ -84,7 +84,7 @@ const getOption = (blogger, weibo) => {
         },
       },
     }, {
-      top: 340,
+      top: 390,
       left: 'center',
       range: ['2018-07-01', '2018-12-31'],
       splitLine: {
@@ -196,7 +196,7 @@ function Component(props) {
 
   return <ReactEcharts
     style={{
-      height: 500,
+      height: 700,
     }}
     option={getOption(blogger, weibo)}
   />;

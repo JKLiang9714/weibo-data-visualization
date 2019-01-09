@@ -28,7 +28,7 @@ function Component(props) {
 
   return <ReactEcharts
     style={{
-      height: 500,
+      height: 700,
     }}
     option={getOption(bloggers)}
   />;
