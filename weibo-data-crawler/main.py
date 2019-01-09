@@ -13,10 +13,15 @@ from config import BEGIN_INDEX
 def main():
     try:
         number = get_user_number()
+        index = BEGIN_INDEX
         # 获取数据库中id表中的所有用户id，准备抓取所有id的信息
         user_ids = get_ids()
-        for user_id in user_ids[BEGIN_INDEX:]:
-            print('正在抓取第 ' + str(number) + ' 位用户')
+        for user_id in user_ids[index:]:
+            print('正在抓取第 ' + str(index + 1) + ' / ' + str(number) + ' 位用户')
+
+            # 设置是否对该用户进行了爬取数据
+            flag = False
+
             # 爬取用户基本信息
             info = BloggerInfo(user_id)             # 调用BloggerInfo类，创建博主的信息实例info
             if user_in_info_table(user_id):
@@ -24,6 +29,7 @@ def main():
             else:
                 info.get_user_info()
                 save_to_info(info)
+                flag = True
 
             # 爬取用户微博详情
             filter = 1                              # 0：爬取全部微博，1：只爬取原创微博
@@ -33,6 +39,7 @@ def main():
             else:
                 weibo.get_weibo_info()
                 save_to_weibo(weibo)
+                flag = True
 
             # 爬取用户好友列表
             friend = BloggerFriend(user_id)         # 调用BloggerFriend类，创建博主的好友实例friend
@@ -41,9 +48,12 @@ def main():
             else:
                 friend.get_user_friend()
                 save_to_friend(friend)
-                number += 1
+                flag = True
+
             print("===========================================================================")
-            time.sleep(random.random() * 25)
+            index += 1
+            if flag:
+                time.sleep(random.random() * 25)
 
     except Exception as e:
         print("Error: ", e)
