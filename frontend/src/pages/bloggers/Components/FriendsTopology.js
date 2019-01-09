@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactEcharts from 'echarts-for-react';
+import { Modal } from "antd";
+import router from 'umi/router';
 import { connect } from "dva";
+
+const confirm = Modal.confirm;
 
 const mapStateToProps = (state) => ({
     blogger: state.blogger.single,
@@ -8,8 +12,8 @@ const mapStateToProps = (state) => ({
 })
 
 const categoryMap = {
-    "男": 0,
-    "女": 1
+    "女": 0,
+    "男": 1,
 }
 
 // 粉丝数转换 用log10来计算几位数
@@ -27,11 +31,13 @@ function generateGraph(friends, blogger) {
     queue.push(fake)
     graph.nodes.push({
         name: fake.name,
+        linkId: fake.id,
         symbol: 'diamond',
         category: categoryMap[fake.sex],
         // fixed: true,
         symbolSize: follower2Value(fake.followers),
         value: follower2Value(fake.followers),
+        label: { show: true }
     })
     nameDic[fake.name] = true
 
@@ -48,6 +54,7 @@ function generateGraph(friends, blogger) {
                     nameDic[people.name] = true
                     graph.nodes.push({
                         name: people.name,
+                        linkId: people.id,
                         symbolSize: follower2Value(people.followers),
                         value: follower2Value(people.followers),
                         category: categoryMap[people.sex],
@@ -77,6 +84,10 @@ const getOption = (friends, blogger) => {
             text: `${blogger.name}的朋友关系`
         },
         legend: {
+            show: true,
+            left: 20,
+            top: 'center',
+            orient: 'vertical',
             data: ["男", "女"]
         },
         series: [{
@@ -91,19 +102,48 @@ const getOption = (friends, blogger) => {
             },
             edges: graph.links,
             focusNodeAdjacency: true,
-            categories: ["男", "女"],
-            roam: true
-        }]
+            categories: [{ name: "女" }, { name: "男" }],
+            draggable: true,
+            roam: true,
+            nodeScaleRatio: 1
+        }],
+        graphic: {
+            elements: [{
+                type: 'circle',
+                onclick: (e) => {
+                    console.log('click', e)
+                }
+            }]
+        }
     }
+}
+
+function showConfirm(data) {
+    console.log(data)
+    confirm({
+        title: `是否前往 ${data.name} 的页面进行查看 ?`,
+        onOk() {
+            router.push(`/bloggers/${data.linkId}`)
+        }
+    });
 }
 
 
 function Component(props) {
     const { friends, blogger } = props;
 
+
+
     return <ReactEcharts
         style={{
             height: 500
+        }}
+        onEvents={{
+            click: (event) => {
+                if (event.dataType === "node") {
+                    showConfirm(event.data)
+                }
+            }
         }}
         option={getOption(friends, blogger)}
     />
