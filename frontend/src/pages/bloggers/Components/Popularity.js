@@ -31,9 +31,29 @@ const getOption = (data, name) => {
   return {
     title: {
       text: `${name} 最近微博热度趋势`,
-      subtext: `最受的微博提到了：${bestContent.tfidf.map(i=>i.word)}`,
+      subtext: `最受欢迎的微博提到了：${bestContent.tfidf.map(i=>i.word)}`,
       rich:{}
     },
+    grid: [
+      {y: 100}
+    ],
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross'
+      }
+    },
+    dataZoom: [
+      {
+        type: 'slider',
+        show: true,
+      },
+      {
+        type: 'inside',
+        start: 94,
+        end: 100
+      },
+    ],
     legend: {
       right: 10,
       data: ['点赞数', '评论数', '转发数']

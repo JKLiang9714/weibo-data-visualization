@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="907fe03f-1ac9-4b1f-9159-17fec4457677" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/server/routers/bloggers.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/server/routers/bloggers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/bloggers/$name.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/bloggers/$name.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/bloggers/Components/WeiboNum.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/bloggers/Components/WeiboNum.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/bloggers/Components/Popularity.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/bloggers/Components/Popularity.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,7 +25,7 @@
     <SUITE FILE_PATH="coverage/weibo_data_clawer$sss.coverage" NAME="sss Coverage Results" MODIFIED="1546655886603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/util" />
     <SUITE FILE_PATH="coverage/weibo_data_clawer$delete.coverage" NAME="delete Coverage Results" MODIFIED="1546700115467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/util" />
     <SUITE FILE_PATH="coverage/weibo_data_clawer$test.coverage" NAME="test Coverage Results" MODIFIED="1546744509032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/util" />
-    <SUITE FILE_PATH="coverage/weibo_data_crawler$main.coverage" NAME="main Coverage Results" MODIFIED="1547004392160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/weibo_data_crawler$main.coverage" NAME="main Coverage Results" MODIFIED="1547043585897" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/weibo_data_crawler$test.coverage" NAME="test Coverage Results" MODIFIED="1546945325047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/weibo_data_crawler$delete.coverage" NAME="delete Coverage Results" MODIFIED="1547000039073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -331,12 +329,12 @@
       <workItem from="1546936578034" duration="11446000" />
       <workItem from="1546994860041" duration="4077000" />
       <workItem from="1546999180118" duration="294000" />
-      <workItem from="1546999542120" duration="11072000" />
+      <workItem from="1546999542120" duration="12945000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27877000" />
+    <option name="totallyTimeSpent" value="29750000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1216" extended-state="6" />
