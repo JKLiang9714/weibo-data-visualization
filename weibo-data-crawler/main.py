@@ -12,14 +12,14 @@ from config import BEGIN_INDEX
 
 def main():
     try:
-        number = get_user_number()
         index = BEGIN_INDEX
+        number = get_user_number()
         # 获取数据库中id表中的所有用户id，准备抓取所有id的信息
         user_ids = get_ids()
         for user_id in user_ids[index:]:
             print('正在抓取第 ' + str(index + 1) + ' / ' + str(number) + ' 位用户')
 
-            # 设置是否对该用户进行了爬取数据
+            # 设置flag，标志是否对该用户爬取了数据
             flag = False
 
             # 爬取用户基本信息
@@ -54,6 +54,8 @@ def main():
             index += 1
             if flag:
                 time.sleep(random.random() * 25)
+            number = get_user_number()
+            user_ids = get_ids()
 
     except Exception as e:
         print("Error: ", e)

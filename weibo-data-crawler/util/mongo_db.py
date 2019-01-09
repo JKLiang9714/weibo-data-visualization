@@ -49,7 +49,7 @@ def save_to_info(info):
         else:
             if info.username == '' or info.sex == '' or info.birthplace == '' or \
                     info.weibo_num == -1 or info.following == -1 or info.followers == -1:
-                print('未找到用户信息！')
+                print('未找到该用户的基本信息！')
             else:
                 # 存储博主的基本信息到数据库中的 blogger_info 表
                 blogger_info_dict = {}
@@ -89,14 +89,15 @@ def save_to_weibo(weibo):
                     'publish_tool': weibo.publish_tool[i - 1]
                 }
                 weibo_content_list.append(weibo_content)
+
+            weibo_content_dict.update({
+                'id': str(weibo.user_id),
+                'weibo_content': weibo_content_list
+            })
+            db[weibo_content_table].insert(weibo_content_dict)
             if len(weibo_content_list) == 0:
-                print("未找到微博信息！")
+                print("未找到该用户的微博信息！")
             else:
-                weibo_content_dict.update({
-                    'id': str(weibo.user_id),
-                    'weibo_content': weibo_content_list
-                })
-                db[weibo_content_table].insert(weibo_content_dict)
                 print('该用户的微博信息已成功存储到 weibo_content 表中！共' + str(len(weibo_content_list)) + '条')
     except Exception as e:
         print("Error: ", e)
@@ -111,14 +112,15 @@ def save_to_friend(friend):
         else:
             # 存储博主的好友信息到数据库中的 blogger_friend 表
             blogger_friends_dict = {}
+
+            blogger_friends_dict.update({
+                'id': str(friend.user_id),
+                'friends': friend.friends
+            })
+            db[blogger_friend_table].insert(blogger_friends_dict)
             if len(friend.friends) == 0:
-                print("未找到好友信息！")
+                print("未找到该用户的好友信息！")
             else:
-                blogger_friends_dict.update({
-                    'id': str(friend.user_id),
-                    'friends': friend.friends
-                })
-                db[blogger_friend_table].insert(blogger_friends_dict)
                 print('该用户的好友信息已成功存储到 blogger_friend 表中！共' + str(len(friend.friends)) + '条')
 
             # 将二级好友ID也存入表id_table
