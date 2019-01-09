@@ -34,8 +34,8 @@ export default function (props) {
         <TabPane tab="发布时间" key="6">
             <WeiboPublishTime />
         </TabPane>
-        <TabPane tab="好友热力分布" key="7">
+        {/* <TabPane tab="好友热力分布" key="7">
             <FriendsDistribution />
-        </TabPane>
+        </TabPane> */}
     </Tabs>
 }

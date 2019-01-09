@@ -3,6 +3,8 @@ import ReactEcharts from 'echarts-for-react';
 import { Modal } from "antd";
 import router from 'umi/router';
 import { connect } from "dva";
+import symbols from "../../../assets/iconsvgpath"
+
 
 const confirm = Modal.confirm;
 
@@ -17,7 +19,7 @@ const categoryMap = {
 }
 
 // 粉丝数转换 用log10来计算几位数
-const follower2Value = (followers) => 2 * Math.log10(followers)
+const follower2Value = (followers) => 5 * Math.log10(followers)
 
 function generateGraph(friends, blogger) {
     const nameDic = {}
@@ -32,9 +34,9 @@ function generateGraph(friends, blogger) {
     graph.nodes.push({
         name: fake.name,
         linkId: fake.id,
-        symbol: 'diamond',
         category: categoryMap[fake.sex],
         // fixed: true,
+        symbol: fake.sex === '男' ? symbols.boy : symbols.girl,
         symbolSize: follower2Value(fake.followers),
         value: follower2Value(fake.followers),
         label: { show: true }
@@ -55,6 +57,7 @@ function generateGraph(friends, blogger) {
                     graph.nodes.push({
                         name: people.name,
                         linkId: people.id,
+                        symbol: people.sex === '男' ? symbols.boy : symbols.girl,
                         symbolSize: follower2Value(people.followers),
                         value: follower2Value(people.followers),
                         category: categoryMap[people.sex],
@@ -88,14 +91,23 @@ const getOption = (friends, blogger) => {
             left: 20,
             top: 'center',
             orient: 'vertical',
-            data: ["男", "女"]
+            data: [
+                { name: "男", icon: symbols.boy },
+                { name: "女", icon: symbols.girl }
+            ]
         },
         series: [{
             type: 'graph',
             layout: 'force',
+            edgeSymbol: ['none', 'arrow'],
+            edgeSymbolSize: 8,
             data: graph.nodes,
+            force: {
+                repulsion: 400
+            },
             label: {
                 normal: {
+                    fontSize: 20,
                     position: 'right',
                     formatter: '{b}'
                 }
@@ -136,7 +148,7 @@ function Component(props) {
 
     return <ReactEcharts
         style={{
-            height: 500
+            height: 600
         }}
         onEvents={{
             click: (event) => {
