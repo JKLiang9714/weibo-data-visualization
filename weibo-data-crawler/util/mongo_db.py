@@ -151,10 +151,10 @@ def get_ids():
         traceback.print_exc()
 
 
-# 获取数据库中blogger_info表中用户的个数
+# 获取数据库中user_id表中用户的个数
 def get_user_number():
     try:
-        return db[blogger_info_table].count()
+        return db[id_table].count()
     except Exception as e:
         print("Error: ", e)
         traceback.print_exc()
