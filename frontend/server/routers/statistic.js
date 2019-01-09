@@ -41,13 +41,49 @@ router.get('/sex', (req, res) => {
     console.info("Get sex Statistics")
 
     Blogger.aggregate([
-        { $group: { _id: "$sex", value: { $sum: 1 } } }
+        {
+            $group: {
+                _id: "$sex",
+                value: { $sum: 1 },
+                avg_followers: { $avg: "$followers" },
+                avg_weibo_num: { $avg: "$weibo_num" },
+                avg_following: { $avg: "$following" },
+                max_followers: { $max: "$followers" },
+                max_weibo_num: { $max: "$weibo_num" },
+                max_following: { $max: "$following" },
+            }
+        }
     ]).then(distribution => {
         res.json(
             distribution.map(i => ({
+                ...i,
                 name: i._id,
-                value: i.value
             }))
+        )
+    })
+
+})
+
+
+router.get('/average', (req, res) => {
+
+    console.info("Get average Statistics")
+
+    Blogger.aggregate([
+        {
+            $group: {
+                _id: null,
+                avg_followers: { $avg: "$followers" },
+                avg_weibo_num: { $avg: "$weibo_num" },
+                avg_following: { $avg: "$following" },
+                max_followers: { $max: "$followers" },
+                max_weibo_num: { $max: "$weibo_num" },
+                max_following: { $max: "$following" },
+            }
+        }
+    ]).then(avgs => {
+        res.json(
+            avgs[0]
         )
     })
 

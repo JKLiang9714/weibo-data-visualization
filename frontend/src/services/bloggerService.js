@@ -30,3 +30,6 @@ export const getSexDistribution = (params) => {
 export const getLocationDistribution = (params) => {
     return api.get(`/statistic/location`);
 }
+export const getAverage = (params) => {
+    return api.get(`/statistic/average`);
+}

@@ -13,7 +13,8 @@ export default {
         weiboContent: [],
         tfidf: [],
         sexDistribution: [],
-        locationDistribution: []
+        locationDistribution: [],
+        average: []
     },
 
     reducers: {
@@ -26,10 +27,13 @@ export default {
         *getDistribution({ payload }, { call, put }) {
             const sexDistribution = yield call(service.getSexDistribution)
             const locationDistribution = yield call(service.getLocationDistribution)
+            const average = yield call(service.getAverage)
+
             yield put({
                 type: 'save', payload: {
-                    sexDistribution: sexDistribution,
-                    locationDistribution: locationDistribution
+                    sexDistribution,
+                    locationDistribution,
+                    average
                 }
             });
         },
