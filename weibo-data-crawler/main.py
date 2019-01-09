@@ -43,7 +43,7 @@ def main():
                 save_to_friend(friend)
                 number += 1
             print("===========================================================================")
-            time.sleep(random.random() * 15)
+            time.sleep(random.random() * 25)
 
     except Exception as e:
         print("Error: ", e)
