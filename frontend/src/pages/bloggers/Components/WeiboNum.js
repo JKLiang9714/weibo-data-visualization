@@ -52,11 +52,11 @@ const getOption = (blogger, weibo) => {
     legend: {
       top: '30',
       left: '100',
-      data:['微博数'],
+      data: ['微博数', 'Top 3'],
       textStyle: {
         color: '#333'
       },
-      show: false
+      show: true
     },
     calendar: [{
       top: 100,
@@ -136,6 +136,53 @@ const getOption = (blogger, weibo) => {
         itemStyle: {
           normal: {
             color: '#ddb926',
+          },
+        },
+      },
+      {
+        name: 'Top 3',
+        type: 'effectScatter',
+        coordinateSystem: 'calendar',
+        calendarIndex: 1,
+        data: data.sort(function (a, b) {
+          return b[1] - a[1];
+        }).slice(0, 3),
+        symbolSize: function(val) {
+          return val[1] * 4;
+        },
+        showEffectOn: 'render',
+        rippleEffect: {
+          brushType: 'stroke'
+        },
+        hoverAnimation: true,
+        itemStyle: {
+          normal: {
+            color: '#f4e925',
+            shadowBlur: 10,
+            shadowColor: '#333'
+          },
+        },
+      },
+      {
+        name: 'Top 3',
+        type: 'effectScatter',
+        coordinateSystem: 'calendar',
+        data: data.sort(function (a, b) {
+          return b[1] - a[1];
+        }).slice(0, 3),
+        symbolSize: function(val) {
+          return val[1] * 4;
+        },
+        showEffectOn: 'render',
+        rippleEffect: {
+          brushType: 'stroke'
+        },
+        hoverAnimation: true,
+        itemStyle: {
+          normal: {
+            color: '#f4e925',
+            shadowBlur: 10,
+            shadowColor: '#333'
           },
         },
       },
