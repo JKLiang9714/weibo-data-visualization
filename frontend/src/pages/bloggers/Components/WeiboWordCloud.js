@@ -55,12 +55,11 @@ function Component(props) {
     tfidfs = tfidfs.filter(item =>
         blogger.name.indexOf(item.word) === -1
     )
-    console.log(tfidfs.length)
 
 
     return <ReactEcharts
         style={{
-            height: 700
+            height: 800
         }}
         option={getOption(tfidfs, blogger.name)}
     />

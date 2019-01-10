@@ -226,7 +226,7 @@ class Component extends React.Component{
 
     return <ReactEcharts
       style={{
-        height: 700,
+        height: 800,
       }}
       onEvents={{
         click: (event) => {

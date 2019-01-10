@@ -13,10 +13,10 @@ npm start
 │   ├── Components # 博主个人可视化
 │   │   ├── BasicInfo.js # 基本信息
 │   │   ├── FriendsTopology.js # 朋友拓扑图
-│   │   ├── Popularity.js # 近50条微博热度
-│   │   ├── WeiboNum.js # 三个月发微博次数趋势图
+│   │   ├── PopularityTrend.js # 近50条微博热度
+│   │   ├── WeiboCalendar.js # 三个月发微博次数趋势图
 │   │   ├── WeiboPublishTime.js # 50条微博发布时间
-│   │   └── WordCloud.js # 50条微博词云
+│   │   └── WeiboWordCloud.js # 50条微博词云
 │   └── $name.js
 ├── HeatMap
 │   └── index.js # 地域分布热力图

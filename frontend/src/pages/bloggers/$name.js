@@ -1,10 +1,10 @@
 import React from 'react'
 import { Tabs } from "antd";
 import BasicInfo from './Components/BasicInfo'
-import WeiboNum from './Components/WeiboNum'
+import WeiboCalendar from './Components/WeiboCalendar'
 import WeiboPublishTime from './Components/WeiboPublishTime'
-import WordCloud from './Components/WordCloud'
-import Popularity from './Components/Popularity'
+import WeiboWordCloud from './Components/WeiboWordCloud'
+import PopularityTrend from './Components/PopularityTrend'
 import FriendsTopology from './Components/FriendsTopology'
 import FriendsDistribution from './Components/FriendsDistribution'
 
@@ -22,14 +22,14 @@ export default function (props) {
         <TabPane tab="好友关系" key="2">
             <FriendsTopology />
         </TabPane>
-        <TabPane tab="微博数趋势" key="3">
-            <WeiboNum />
+        <TabPane tab="微博日历" key="3">
+            <WeiboCalendar />
         </TabPane>
         <TabPane tab="热度趋势" key="4">
-            <Popularity />
+            <PopularityTrend />
         </TabPane>
         <TabPane tab="微博词云" key="5">
-            <WordCloud />
+            <WeiboWordCloud />
         </TabPane>
         <TabPane tab="发布时间" key="6">
             <WeiboPublishTime />

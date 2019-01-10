@@ -24,7 +24,11 @@ const getOption_Week = (data, blogger) => {
   return {
     title: {
       text: `${blogger.name} 喜欢在周几发布微博`,
-      left: "center"
+      left: "center",
+      top: 30,
+      textStyle: {
+        fontSize: 30
+      }
     },
     tooltip: {
       trigger: 'item',
@@ -75,7 +79,11 @@ const getOption_Time = (data, blogger) => {
   return {
     title: {
       text: `${blogger.name} 喜欢在几点发布微博`,
-      left: "center"
+      left: "center",
+      top: 30,
+      textStyle: {
+        fontSize: 30
+      }
     },
     tooltip: {
       trigger: 'item',
@@ -145,7 +153,11 @@ const getOption_Polar = (data, blogger) => {
   return {
     title: {
       text: `${blogger.name} 微博发布时间总览`,
-      left: "center"
+      left: "center",
+      top: 30,
+      textStyle: {
+        fontSize: 30
+      }
     },
     polar: {},
     tooltip: {
@@ -199,7 +211,7 @@ function Component(props) {
     <Col span={8}>
       <ReactEcharts
         style={{
-          height: 700,
+          height: 800,
         }}
         option={getOption_Week(weiboContent, blogger)}
       />
@@ -207,7 +219,7 @@ function Component(props) {
     <Col span={8}>
       <ReactEcharts
         style={{
-          height: 700,
+          height: 800,
         }}
         option={getOption_Time(weiboContent, blogger)}
       />
@@ -215,7 +227,7 @@ function Component(props) {
     <Col span={8}>
       <ReactEcharts
         style={{
-          height: 700,
+          height: 800,
         }}
         option={getOption_Polar(weiboContent, blogger)}
       />
