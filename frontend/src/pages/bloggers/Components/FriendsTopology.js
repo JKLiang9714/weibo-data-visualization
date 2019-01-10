@@ -144,8 +144,6 @@ function showConfirm(data) {
 function Component(props) {
     const { friends, blogger } = props;
 
-
-
     return <ReactEcharts
         style={{
             height: 700

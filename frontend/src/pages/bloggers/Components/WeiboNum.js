@@ -16,34 +16,40 @@ function getCalenderData(weibo) {
   var end = +echarts.number.parseDate('2019-01-01');
   var dayTime = 3600 * 24 * 1000;
   for (var time = begin; time < end; time += dayTime) {
-    day_count[echarts.format.formatTime('yyyy-MM-dd', time)] = 0;
+    day_count[echarts.format.formatTime('yyyy-MM-dd', time)] = {'count': 0, 'weibo': []};
   }
 
   for (var i = 0; i < weibo.length; i++) {
     var one_date = weibo[i].publish_time.split(' ')[0];
     if (+echarts.number.parseDate(one_date) >= begin && +echarts.number.parseDate(one_date) < end) {
-      day_count[one_date]++;
+      day_count[one_date].count++;
+      day_count[one_date].weibo.push(weibo[i].tfidf);
     }
   }
 
   for (var time = begin; time < end; time += dayTime) {
     data.push([
       echarts.format.formatTime('yyyy-MM-dd', time),
-      day_count[echarts.format.formatTime('yyyy-MM-dd', time)]
+      day_count[echarts.format.formatTime('yyyy-MM-dd', time)].count,
+      day_count[echarts.format.formatTime('yyyy-MM-dd', time)].weibo,
     ])
   }
   return data;
 }
 
-const getOption = (blogger, weibo) => {
+const getOption = (blogger, weibo, subtext) => {
   var data = getCalenderData(weibo);
   return {
     title: {
-      text: `2018年 ${blogger.name} 每天发布的微博数量`,
+      text: `2018年 ${blogger.name} 每天发布的微博数量及关键词`,
+      subtext: `${ subtext }`,
       left: 'center',
       top: 30,
       textStyle: {
         fontSize: 30
+      },
+      subtextStyle: {
+        fontSize: 15
       }
     },
     tooltip: {
@@ -61,6 +67,7 @@ const getOption = (blogger, weibo) => {
     calendar: [{
       top: 150,
       left: 'center',
+      cellSize: [30],
       range: ['2018-01-01', '2018-06-30'],
       splitLine: {
         show: true,
@@ -84,8 +91,9 @@ const getOption = (blogger, weibo) => {
         },
       },
     }, {
-      top: 390,
+      top: 420,
       left: 'center',
+      cellSize: [30],
       range: ['2018-07-01', '2018-12-31'],
       splitLine: {
         show: true,
@@ -190,16 +198,46 @@ const getOption = (blogger, weibo) => {
   };
 };
 
+class Component extends React.Component{
+  state = {
+    subtext: ''
+  };
 
-function Component(props) {
-  const { blogger, weibo } = props;
+  convertData(data) {
+    let convert_data = [];
+    for (var i = 0; i < data.length; i++) {
+      for (var j = 0; j < data[i].length; j++) {
+        convert_data.push(data[i][j].word);
+      }
+    }
+    return convert_data.slice(0, 5);
+  }
 
-  return <ReactEcharts
-    style={{
-      height: 700,
-    }}
-    option={getOption(blogger, weibo)}
-  />;
+  showWeibo(data) {
+    this.setState({
+      subtext: data[0] + ' 微博提到了：' + this.convertData(data[2])
+    });
+    // console.log(data)
+  }
+
+  render(){
+    const { blogger, weibo } = this.props;
+    const { subtext } = this.state;
+
+    return <ReactEcharts
+      style={{
+        height: 700,
+      }}
+      onEvents={{
+        click: (event) => {
+          if (event.seriesType === "scatter" || event.seriesType === "effectScatter") {
+            this.showWeibo(event.data)
+          }
+        }
+      }}
+      option={getOption(blogger, weibo, subtext)}
+    />;
+  }
 }
 
 export default connect(mapStateToProps)(Component);
