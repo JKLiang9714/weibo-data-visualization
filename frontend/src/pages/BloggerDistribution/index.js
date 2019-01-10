@@ -28,7 +28,8 @@ const getOption = (data) => {
     },
     legend: {
       left: 'left',
-      data: ['男', '女']
+      data: ['男', '女'],
+      itemWidth: 15,
     },
     xAxis: {
       name: "平均微博数",

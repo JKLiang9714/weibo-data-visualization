@@ -91,6 +91,7 @@ const getOption = (friends, blogger) => {
             left: 20,
             top: 'center',
             orient: 'vertical',
+            itemWidth: 15,
             data: [
                 { name: "男", icon: symbols.boy },
                 { name: "女", icon: symbols.girl }
