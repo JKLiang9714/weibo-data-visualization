@@ -149,7 +149,7 @@ function Component(props) {
 
     return <ReactEcharts
         style={{
-            height: 600
+            height: 700
         }}
         onEvents={{
             click: (event) => {

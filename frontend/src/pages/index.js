@@ -26,10 +26,10 @@ const columns = [{
   title: '微博数',
   dataIndex: 'weibo_num',
 }, {
-  title: '关注',
+  title: '关注数',
   dataIndex: 'following',
 }, {
-  title: '粉丝',
+  title: '粉丝数',
   dataIndex: 'followers',
 }];
 

@@ -4,106 +4,80 @@ import { connect } from 'dva';
 import { Row, Col } from 'antd';
 
 const mapStateToProps = (state) => ({
-  bloggers: state.blogger.single,
+  data: state.blogger,
 });
 
-const getOption_WeiboNum = (data) => {
+const getOption = (data) => {
   return {
-    series: [
-      {
-        title: {
-          fontSize: 20,
-        },
-        max: 5000,
-        type: 'gauge',
-        detail: {
-          formatter: '{value}',
-          fontSize: 22,
-        },
-        data: [{
-          value: data.weibo_num,
-          name: '微博数',
-        }],
+  //   series: [
+  //     {
+  //       title: {
+  //         fontSize: 20,
+  //       },
+  //       max: 5000,
+  //       type: 'gauge',
+  //       detail: {
+  //         formatter: '{value}',
+  //         fontSize: 22,
+  //       },
+  //       data: [{
+  //         value: data.weibo_num,
+  //         name: '微博数',
+  //       }],
+  //     },
+  //   ]
+    title: {
+      text: `全部博主平均水平 vs ${data.single.name}`,
+    },
+    tooltip: {},
+    legend: {
+      data: ['全部博主的平均微博数、关注数、粉丝数', `${data.single.name}的微博数、关注数、粉丝数`],
+      left: 20,
+      top: 'center',
+      orient: 'vertical',
+    },
+    radar: {
+      // shape: 'circle',
+      name: {
+        textStyle: {
+          color: '#fff',
+          backgroundColor: '#999',
+          borderRadius: 3,
+          padding: [3, 5]
+        }
       },
-    ]
-  };
-};
-
-const getOption_Following = (data) => {
-  return {
-    series: [
-      {
-        title: {
-          fontSize: 20,
+      indicator: [
+        { name: '微博数（Weibo_Nums）', max: data.average.max_weibo_num},
+        { name: '关注数（Following_Nums）', max: data.average.max_following},
+        { name: '粉丝数（Follower_Nums）', max: data.average.max_followers},
+      ]
+    },
+    series: [{
+      type: 'radar',
+      // areaStyle: {normal: {}},
+      data : [
+        {
+          value : [data.average['avg_weibo_num'], data.average['avg_following'], data.average['avg_followers']],
+          name : '全部博主的平均微博数、关注数、粉丝数'
         },
-        max: 5000,
-        type: 'gauge',
-        detail: {
-          formatter: '{value}',
-          fontSize: 22,
-        },
-        data: [{
-          value: data.following,
-          name: '关注数',
-        }],
-      },
-    ]
-  };
-};
-
-const getOption_Followers = (data) => {
-  return {
-    series: [
-      {
-        title: {
-          fontSize: 20,
-        },
-        axisLabel: {
-          formatter: function (value) {
-            return value / 10000 + 'w';
-          }
-        },
-        max: 100000000,
-        type: 'gauge',
-        detail: {
-          formatter: '{value}',
-          fontSize: 22,
-        },
-        data: [{
-          value: data.followers,
-          name: '粉丝数',
-        }],
-      },
-    ]
+        {
+          value : [data.single.weibo_num, data.single.following, data.single.followers],
+          name : `${data.single.name}的微博数、关注数、粉丝数`
+        }
+      ]
+    }]
   };
 };
 
 function Component(props) {
-  const { bloggers } = props;
+  const { data } = props;
 
-  return <Row gutter={16}>
-    <Col span={8}> <ReactEcharts
-      style={{
-        height: 450,
-      }}
-      option={getOption_WeiboNum(bloggers)}
-    /> </Col>
-
-    <Col span={8}>
-      <ReactEcharts
-        style={{
-          height: 450,
-        }}
-        option={getOption_Following(bloggers)}
-      /> </Col>
-
-    <Col span={8}> <ReactEcharts
-      style={{
-        height: 450,
-      }}
-      option={getOption_Followers(bloggers)}
-    /> </Col>
-  </Row>;
+  return <ReactEcharts
+    style={{
+      height: 700,
+    }}
+    option={getOption(data)}
+  />;
 }
 
 export default connect(mapStateToProps)(Component);
