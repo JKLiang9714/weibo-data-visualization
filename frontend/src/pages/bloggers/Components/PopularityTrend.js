@@ -8,6 +8,9 @@ const mapStateToProps = (state) => ({
 });
 
 const getOption = (data, name) => {
+  // data按日期进行排序
+  data.reverse((a, b) => new Date(a.publish_time).getTime() - new Date(b.publish_time).getTime())
+
   let popularity_data = [];
   let like_list = [];
   let comment_list = [];
@@ -31,17 +34,28 @@ const getOption = (data, name) => {
   return {
     title: {
       text: `${name} 最近微博热度趋势`,
-      subtext: `最受欢迎的微博提到了：${bestContent.tfidf.map(i=>i.word)}`,
-      rich:{}
+      subtext: `最受欢迎的微博提到了：${bestContent.tfidf.map(i => i.word)}`,
+      rich: {}
     },
     grid: [
-      {y: 100}
+      { y: 100 }
     ],
     tooltip: {
       trigger: 'axis',
       axisPointer: {
         type: 'cross'
-      }
+      },
+
+      formatter: (param) => {
+        const weibo = data[param[0].dataIndex]
+        return `
+        点赞：${weibo.like} &nbsp; 转发：${weibo.forward} &nbsp; 评论：${weibo.comment} <br/>
+        关键词：${weibo.tfidf.map(i => i.word).join(",")} <br/><br/>
+        内容：${weibo.publish_content} 
+        <br/>
+        `
+      },
+      extraCssText: 'width: 400px; word-break: break-all; white-space: normal;'
     },
     dataZoom: [
       {
