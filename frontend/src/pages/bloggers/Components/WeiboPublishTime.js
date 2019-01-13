@@ -27,7 +27,7 @@ const getOption_Week = (data, blogger) => {
       left: "center",
       top: 30,
       textStyle: {
-        fontSize: 30
+        fontSize: 25
       }
     },
     tooltip: {
@@ -82,7 +82,7 @@ const getOption_Time = (data, blogger) => {
       left: "center",
       top: 30,
       textStyle: {
-        fontSize: 30
+        fontSize: 25
       }
     },
     tooltip: {
@@ -156,7 +156,7 @@ const getOption_Polar = (data, blogger) => {
       left: "center",
       top: 30,
       textStyle: {
-        fontSize: 30
+        fontSize: 25
       }
     },
     polar: {},
