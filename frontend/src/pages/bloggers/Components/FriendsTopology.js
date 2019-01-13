@@ -79,7 +79,8 @@ function generateGraph(friends, blogger, maxDepth = 3) {
         }
     }
 
-
+    console.log(friends)
+    console.log(graph)
     return graph
 }
 
