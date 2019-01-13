@@ -27,7 +27,7 @@ npm start
 2. 男女的平均微博数对比； 
 3. 男女的平均粉丝数对比
 
-![](./assets/blogger_distribution.jpg)
+![](./frontend/assets/blogger_distribution.jpg)
 
 #### 博主地理位置分布热力图
 
@@ -40,7 +40,7 @@ npm start
 1. 微博使用人数在全国的分布情况，普遍在东部颜色较深；  
 2. 各省微博使用的人数
 
-![](./assets/heatmap.jpg)
+![](./frontend/assets/heatmap.jpg)
 
 
 
@@ -54,7 +54,7 @@ npm start
 
 分析内容：比较 **全部博主的平均数** 与 **特定博主** 的情况
 
-![](./assets/basicinfo.jpg)
+![](./frontend/assets/basicinfo.jpg)
 
 #### 朋友关系拓扑图
 
@@ -68,9 +68,9 @@ npm start
 
 2. 博主的好友中男女分布
 
-![](./assets/topology_1.jpg)
-![](./assets/topology_2.jpg)
-![](./assets/topology_3.jpg)
+![](./frontend/assets/topology_1.jpg)
+![](./frontend/assets/topology_2.jpg)
+![](./frontend/assets/topology_3.jpg)
 
 #### 微博数日历图
 
@@ -86,7 +86,7 @@ npm start
 
 3. 点击后还能看到当天所有微博出现的高频、关键词
 
-![](./assets/weibo_num.jpg)
+![](./frontend/assets/weibo_num.jpg)
 
 #### 微博热度折线图
 
@@ -100,7 +100,7 @@ npm start
 
 2. 每条微博的内容
 
-![](./assets/popularity.jpg)
+![](./frontend/assets/popularity.jpg)
 
 #### 微博词云图
 
@@ -114,7 +114,7 @@ npm start
 
 2. 博主的关注领域
 
-![](./assets/wordcloud.jpg)
+![](./frontend/assets/wordcloud.jpg)
 
 #### 微博发布时间分布图
 
@@ -128,7 +128,7 @@ npm start
 2. 博主在几点的发布频率
 3. 博主在周几的几点发布频率
 
-![](./assets/publish_time.jpg)
+![](./frontend/assets/publish_time.jpg)
 
 
 
