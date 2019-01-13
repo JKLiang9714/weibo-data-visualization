@@ -34,17 +34,19 @@ const getOption = (data) => {
     xAxis: {
       name: "平均微博数",
       min: 400,
+      max: 600
     },
     yAxis: {
       name: "平均粉丝数",
       min: 3000,
+      max: 9000,
     },
     series: data.map(i => ({
       name: i.name,
       type: 'scatter',
       // symbol: 'image://' + i.name === '男' ? boy : girl,
       symbol: i.name === '男' ? symbols.boy : symbols.girl,
-      symbolSize: i.value / 10,
+      symbolSize: i.value / 25,
       data: [[
         i.avg_following,
         i.avg_weibo_num

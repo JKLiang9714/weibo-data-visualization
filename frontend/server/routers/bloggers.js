@@ -44,7 +44,7 @@ router.get('/:id?', (req, res) => {
         return res.status(500).send(err);
       }
       if (bloggers.length === 0) {
-        return res.status(404).send(`Blogger Not Existed`);
+        // return res.status(404).send(`Blogger Not Existed`);
       }
 
       res.json(bloggers);
