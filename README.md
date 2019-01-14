@@ -494,6 +494,7 @@ npm start
 
     mongoimport -d Weibo -c user_id (weibo-mongodb-data 的路径)/user_id.dat
 
+weibo-mongodb-data 存储了数据库中所有collection的数据，数据库包含 10500 位微博用户的基本信息、好友信息、微博信息，大约600M 数据，需要的话，联系作者 liangjiakun@zju.edu.cn
 
 ## 数据爬取过程
 ![](https://i.imgur.com/BWKkRtU.png)
